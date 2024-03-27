@@ -1,0 +1,10 @@
+.content{
+    height: 100vh;
+    background-color: #EEF5FF;
+    overflow: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 30px;
+}
