@@ -9,15 +9,17 @@ import { RiLogoutCircleLine } from "react-icons/ri";
 
 
 import "./SideNav.css"
-export const SideNav = ({onLogout}) => {
+export const SideNav = ({onLogOut}) => {
     const [isOpen,setisOpen]=useState(false);
     const toggleSideBar=()=>{
         setisOpen(!isOpen);
     }
-
-    const handleLogOut =()=>{
-        onLogout();
+    const handlelogout = ()=>{
+        onLogOut();
+        console.log('logout')
     }
+
+  
   return <div className={`sidebar ${isOpen?'open':''}`}>
             <div onClick={toggleSideBar} className="hamburger">           
                  <Hamburger />
@@ -25,21 +27,21 @@ export const SideNav = ({onLogout}) => {
            <nav className="nav">
             <div id="nav">
                 <NavLink className="link" to='/'> 
-                 <div style={{ fontSize: '33px' }}> {/* Adjust the fontSize as needed */}
+                 <div style={{ fontSize: '33px' }}> 
                     <MdDashboard />
                  </div><p>Dashboard</p>
                 </NavLink>
             </div>
             <div id="nav">
                 <NavLink className="link" to='/checkbooks'> 
-                <div style={{ fontSize: '33px' }}> {/* Adjust the fontSize as needed */}
+                <div style={{ fontSize: '33px' }}> 
                 <GiArchiveResearch />
                 </div><p>CheckBooks</p>
                 </NavLink>
             </div>
             <div id="nav">
                 <NavLink className="link" to='/addbooks' > 
-                <div style={{ fontSize: '30px' }}> {/* Adjust the fontSize as needed */}
+                <div style={{ fontSize: '30px' }}> 
                 <FaBookMedical />
                 </div>
                 <p>AddBooks</p>
@@ -47,7 +49,7 @@ export const SideNav = ({onLogout}) => {
             </div>
             <div id="nav">
                 <NavLink className="link" to='/issuedbooks'>
-                     <div style={{ fontSize: '30px' }}> {/* Adjust the fontSize as needed */}
+                     <div style={{ fontSize: '30px' }}> 
                 <FaBookBookmark />
              </div>
              <p>IssuedBooks</p>
@@ -55,9 +57,9 @@ export const SideNav = ({onLogout}) => {
             </div>
            </nav>
 
-            <div className="logout"> 
+            <div className="logout" onClick={handlelogout}> 
             
-            <div style={{ fontSize: '30px' }}> {/* Adjust the fontSize as needed */}
+            <div style={{ fontSize: '30px' }}> 
             <RiLogoutCircleLine/>
              </div>
              <p>Logout</p>

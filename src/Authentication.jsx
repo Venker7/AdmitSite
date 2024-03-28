@@ -4,17 +4,22 @@ import { LoginForm } from "./LoginForm";
 import { OTPVerification } from "./OTPVerification";
 import { RegistrationForm } from "./RegistrationForm";
 import { SlidingForm } from "./SlidingForm";
+import {ToastContainer,toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Authentication = () => {
-    const [IsOtpVerified,setOtpVerified]=useState(false);
+    const [IsOtpVerified,setOtpVerified]=useState(true);
     const showOtpForm =()=>{
         setOtpVerified(true)
+    }
+    const handleVerify=()=>{
+     toast("OTP has verified");
     }
   return <div className="authentication">
     <div className="authentication-container">
             <div>
-               {IsOtpVerified ?(<OTPVerification/>):<SlidingForm onRegister={showOtpForm}/>}
-              
+               {IsOtpVerified ?(<OTPVerification onVerify={handleVerify}/>):<SlidingForm onRegister={showOtpForm}/>}
+              <ToastContainer/>
             </div>
     </div>
   </div>;

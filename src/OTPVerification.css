@@ -1,6 +1,6 @@
 .otp-container{
-    height: 320px;
-    width: 300px;
+    height: 420px;
+    width: 380px;
     background-color: #FFFFFF;
     border-radius: 15px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
@@ -10,36 +10,30 @@
 
 }
 
+.otp-intro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .otp-intro h6{
     margin-top: 30px;
-font-size: 30px;
-margin-left: 30px;
+font-size: 20px;
 }
 
 .otp-intro p{
     font-size: 13px;
-    margin-left: 10px;
 }
 
 .otp-inputs{
     margin-top: 40px;
     display: flex;
-    width: 100%;
+    width: 380px;
     height: 43px;
+    justify-content: center;
+    align-items: center;
 
 }
-.otp-inputs input{
-    background-color: rgb(224, 226, 228);
-    margin-left: 25.5px;
-    border: none;
-    outline: 1px solid rgb(185, 183, 183);
-    width: 10px;
-    padding: 10px;
-    border-radius: 14px;
-    color: black;
-    font-size: 19px;
-    padding: 17px;
-}
+
 .otp-verify{
     margin-top: 10px;
     border: none;
@@ -48,6 +42,7 @@ margin-left: 30px;
     border-radius: 15px;
     background-color: #3252F8;
     cursor: pointer;
+    font-size: 17px;
 }
 
 .otp-verify:hover{
@@ -57,4 +52,41 @@ margin-left: 30px;
 .resend{
     font-size: 12px;
     margin-top: 20px;
+    display: flex;
+}
+
+.logo,img{
+    margin-top: 20px;
+    height: 100px;
+    width: 100px;
+}
+
+.input{
+    width: 82px;
+    display: flex;
+    justify-content: center;
+}
+.input input{
+    width: 10px;
+    height: 10px;
+    padding: 22px;
+    background-color: #c7c7cac6;
+    border: none;
+    color: black;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.otp-time{
+    margin-left: 5px;
+}
+#resend-otp{
+    color: blue;
+    cursor: pointer;
+    font-style: bold;
+}
+
+.input input:focus{
+    background-color: #EEEDEB;
+    outline: 1px solid #1640D6;
 }

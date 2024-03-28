@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./OTPVerification.css";
-
-export const OTPVerification = () => {
+import img from './Components/Manipur_Technical_University_logo.png'
+import {ToastContainer,toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+export const OTPVerification = ({onVerify}) => {
   const [countdown, setCountdown] = useState(60); // Initial countdown value in seconds
   const [isResending, setIsResending] = useState(false);
 
@@ -13,7 +15,7 @@ export const OTPVerification = () => {
           if (prevCountdown === 0) {
             clearInterval(timer);
             setIsResending(false);
-            return 60; // Reset countdown to 60 seconds when it reaches 0
+            return 60; 
           }
           return prevCountdown - 1;
         });
@@ -24,26 +26,37 @@ export const OTPVerification = () => {
 
   const handleResend = () => {
     setIsResending(true);
-    // Simulate sending OTP (Replace with your actual logic)
     console.log("Resending OTP...");
+    toast('OTP has been resend to your MTU email')
   };
+
+  const verify =()=>{
+    onVerify();
+  }
 
   return (
     <div className="otp-container">
       <div className="otp-intro">
+        <div className="logo">
+            <img src={img} alt="" />
+        </div>
         <h6>OTP Verification</h6>
         <p>We will send you a one-time password on your MTU email</p>
       </div>
       <div className="otp-inputs">
-        <input type="text" maxLength={1}/>
-        <input type="text" maxLength={1} />
-        <input type="text"  maxLength={1}/>
-        <input type="text"  maxLength={1}/>
+        <div className="input"><input type="text" maxLength={1}/></div>
+        <div className="input"><input type="text" maxLength={1}/></div>
+        <div className="input"><input type="text" maxLength={1}/></div>
+        <div className="input"><input type="text" maxLength={1}/></div>
+
       </div>
-      <div className="resend" onClick={handleResend}>
-        Resend OTP 00:{countdown !== 0 && `${countdown}s`}
+
+      <div className="resend">
+        <div id="resend-otp" onClick={handleResend}>Resend OTP</div><div className="otp-time">00:{countdown !== 0 && `${countdown}s`}</div>
       </div>
-      <button className="otp-verify"><p id="verify">Verify</p></button>
+
+      <button className="otp-verify" onClick={verify}><p id="verify">Verify OTP</p></button>
+      <ToastContainer autoClose={10000}/>
     </div>
   );
 };

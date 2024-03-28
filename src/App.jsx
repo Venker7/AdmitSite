@@ -6,13 +6,15 @@ import {Routes,Route} from "react-router-dom"
 import { Authentication } from './Authentication';
 function App() {
   const [IsLogin,setIsLogin]=useState(false);
-  const handleLogOut = ()=>{
-    setIsLogin(false)
+  const handleLogOut=()=>{
+      setTimeout(()=>{
+        setIsLogin(false)
+      },3000);
   }
 
   return (
     <div className="App">
-      {IsLogin ? <Home onLogout={handleLogOut}/>:<Authentication/>}
+      {IsLogin ? <Home onLogOut={handleLogOut}/>:<Authentication/>}
     </div>
   )
 }

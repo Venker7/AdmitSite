@@ -6,9 +6,9 @@ import { Dashboard } from "./Dashboard";
 import { Contain } from "./Contain";
 import { Routes,Route } from "react-router-dom";
 
-export const Home = () => {
+export const Home = ({onLogOut}) => {
   return <div className="home">
-    <SideNav/>
+    <SideNav onLogOut={onLogOut}/>
       
     <Contain/>
     
