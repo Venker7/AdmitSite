@@ -8,7 +8,7 @@ import {ToastContainer,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const Authentication = () => {
-    const [IsOtpVerified,setOtpVerified]=useState(true);
+    const [IsOtpVerified,setOtpVerified]=useState(false);
     const showOtpForm =()=>{
         setOtpVerified(true)
     }

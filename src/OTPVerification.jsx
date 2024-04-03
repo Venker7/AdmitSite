@@ -5,7 +5,7 @@ import {ToastContainer,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export const OTPVerification = ({onVerify}) => {
   const [countdown, setCountdown] = useState(60); // Initial countdown value in seconds
-  const [isResending, setIsResending] = useState(false);
+  const [isResending, setIsResending] = useState(true);
 
   useEffect(() => {
     let timer;
@@ -27,7 +27,7 @@ export const OTPVerification = ({onVerify}) => {
   const handleResend = () => {
     setIsResending(true);
     console.log("Resending OTP...");
-    toast('OTP has been resend to your MTU email')
+    toast('OTP has been resend to your MTU email',{autoClose:10000,position:"top-left"})
   };
 
   const verify =()=>{
@@ -56,7 +56,7 @@ export const OTPVerification = ({onVerify}) => {
       </div>
 
       <button className="otp-verify" onClick={verify}><p id="verify">Verify OTP</p></button>
-      <ToastContainer autoClose={10000}/>
+      <ToastContainer/>
     </div>
   );
 };

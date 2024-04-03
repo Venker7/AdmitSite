@@ -12,6 +12,8 @@ function App() {
       },3000);
   }
 
+  
+
   return (
     <div className="App">
       {IsLogin ? <Home onLogOut={handleLogOut}/>:<Authentication/>}
