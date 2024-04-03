@@ -3,4 +3,104 @@
     width: 100%;
     height: 100%;
     background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.addbooks-form{
+    width: 700px;
+    height: 600px;
+    background-color: #DFE9F5;
+    margin-top: 45px;
+    display: flex;
+align-items: center;    
+flex-direction: column;
+}
+
+.addbooks-form h3{
+    margin-top: 20px;
+}
+
+.field{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.field div{
+    margin-top: 30px;
+}
+
+.field p{
+    margin-left: 95px;
+    font-size: 13px;
+    color: red;
+    height: 10px;
+}
+
+.field input{
+background-color: transparent;
+border: none;
+outline: 1px solid black;
+margin-left: 5px;
+width: 400px;
+height: 38px;
+padding-left: 15px;
+font-size: 15px;
+color: black;
+
+}
+
+.field input:focus{
+    background-color: #DFE9F5;
+    outline: 2px solid blue;
+    color: black;
+    font-size: 15px;
+}
+.field .button{
+    display: flex;
+    justify-content: center;
+}
+.field button{
+    width: 200px;
+    height: 40px;
+    margin-top: 20px;
+    background-color: #7360DF;
+    border: none;
+}
+
+.field select{
+    border: none;
+    width: 420px;
+    height: 40px;
+    margin-left: 3px;
+    outline: 1px solid black;
+    background-color: #DFE9F5;
+    color: black;
+    font-size: 15px;
+    padding-left:10px;
+}
+
+.field option{
+    font-size: 15px;
+    margin: 20px;
+    overflow: scroll;
+    background-color: #0d0d0d9a;
+    color: #DFE9F5;
+}
+
+.book-name input{
+margin-left: 15px;
+}
+.book-id input{
+margin-left: 37px;
+}
+.author input{
+margin-left: 42px;
+}
+
+.field button:hover{
+    background-color: #2b09e9;
+    cursor: pointer;
 }

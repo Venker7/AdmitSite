@@ -10,6 +10,7 @@ border-radius: 15px;
 
 }
 
+  
 .login-form h2{
     margin-top: 30px;
 }
@@ -24,17 +25,34 @@ border-radius: 15px;
     flex-direction: column;
 }
 
+.form p{
+    color: red;
+height: 15px;
+font-size: 12px;
+}
+
+.form .input-error{
+    outline: 2px solid red;
+    background-color: transparent;
+    animation: shake 0.5s ease-in-out;
+}
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
 .form input{
-    height: 40px;
     width: 250px;
-    display: flex;
-    margin: 10px;
-    background-color: #F0EDFF;
+    height: 45px;
+    background-color: #c599f351;
     border: none;
     color: black;
-    padding-left: 15px;
-    border-radius: 10px;
     font-size: 17px;
+    padding: 0px 18px;
+    border-radius: 10px;
 }
 
 input:focus{
@@ -56,9 +74,6 @@ input:invalid{
     100% { transform: translateX(0); }
 }
 
-.form label{
-    margin-left: 7px;
-}
 
 .button{
     width: 100%;

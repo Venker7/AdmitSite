@@ -20,14 +20,14 @@
 
 .form-register .input{
     width: 250px;
-    height: 40px;
-    background-color: #dfdafa;
+    height: 45px;
+    background-color: #c599f351;
     border: none;
     color: black;
     font-size: 17px;
     padding: 0px 18px;
     border-radius: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 .form-register .input-error {
     outline: 2px solid red;

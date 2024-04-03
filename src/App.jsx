@@ -11,12 +11,17 @@ function App() {
         setIsLogin(false)
       },3000);
   }
+  const handleLogIn =()=>{
+    setTimeout(()=>{
+        setIsLogin(!IsLogin)
+    },2000)
+  }
 
   
 
   return (
     <div className="App">
-      {IsLogin ? <Home onLogOut={handleLogOut}/>:<Authentication/>}
+      {IsLogin ? <Home onLogOut={handleLogOut}/>:<Authentication onlogin={handleLogIn}/>}
     </div>
   )
 }

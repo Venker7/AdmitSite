@@ -1,10 +1,15 @@
 import React from "react";
 import "./LoginForm.css";
+import {useForm} from 'react-hook-form'
 
-export const LoginForm = ({ setRegister }) => {
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent the default behavior of form submission
-    console.log('form has submit');
+export const LoginForm = ({ setRegister,onlogin }) => {
+
+  const form = useForm();
+  const {register,handleSubmit,formState}=form;
+  const {errors}=formState;
+  const onLogin = (data) => {
+    console.log('form has submit',data);
+    onlogin()
   };
 
   const gotoRegister = () => {
@@ -17,14 +22,29 @@ export const LoginForm = ({ setRegister }) => {
     <div className="login-form">
       <h2>Login</h2>
       <p>Let's Go To Our Books World</p>
-      <form className="form" onSubmit={handleSubmit}>
-        <label>Email</label>
-        <input type="email" pattern="[a-z0-9_]+@mtu\.ac\.in" title="please enter a valid MTU email address" />
-        
-        <label>Registration No.</label>
-        <input type="text" pattern="[0-9]{4}[A-Z]{2}[0-9]{4}" title="Please enter a valid registration number"/>
+      <form className="form" onSubmit={handleSubmit(onLogin)} noValidate>
+      <label htmlFor="email">Email</label>
+        <input
+          type="text"
+          className={`input ${errors.email ? 'input-error' : ''}`}
+          {...register("email", {
+            pattern: {
+              value: /^[a-zA-Z0-9._]+@mtu\.ac\.in$/,
+              message: 'Invalid email'
+            },
+            required: "Valid Email is required"
+          })}
+        />
+        <p>{errors.email?.message}</p>
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          className={`input ${errors.password ? 'input-error' : ''}`}
+          {...register("password", { required: "Password is required" })}
+        />
+        <p>{errors.password?.message}</p>
         <div className="button">
-          <button className="button-login">Login</button> {/* Specify type="submit" for login button */}
+          <button className="button-login">Login</button> 
         </div>
       </form>
       <div className="register">
