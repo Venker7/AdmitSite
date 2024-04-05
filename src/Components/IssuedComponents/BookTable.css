@@ -1,0 +1,146 @@
+.table{
+    height: 83%;
+    width: 95%;
+    margin-left: 20px;
+    margin-top: 20px;
+    background-color:#FFFFFF;
+}
+
+.table .thead{
+height: 35px;
+background-color:#dad7d7;
+font-size: 14px;
+color: #FFFFFF;
+display: flex;
+align-items: center;
+outline: 1px solid black;
+
+}
+
+.table .thead div{
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #40A2E3;
+}
+
+.table .thead .name{
+    width: 400px;
+}
+.table .thead .author{
+    width: 290px;
+}.table .thead .id{
+    width: 90px;
+}.table .thead .Sid{
+    width: 120px;
+}.table .thead .dt{
+    width: 100px;
+}.table .thead .dr{
+    width: 100px;
+}.table .thead .drnew{
+    width: 100px;
+}.table .thead .remark{
+    width: 182px;
+}
+
+.tbody{
+    height: 560px;
+    background-color: #dad7d7;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+  overflow: scroll;
+  outline: 1px solid rgb(59, 59, 59);
+}
+.tbody td{
+    height: 31px;
+}
+
+.BooksRow:nth-child(even){
+    background-color: #a4a3a3;
+}
+.BooksRow:hover{
+    background-color: #c6dbc4;
+    color: rgb(210, 98, 23);
+    font-size: 15px;
+}
+.tbody .id{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95px;
+}
+
+.tbody .name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+}
+
+.tbody .author{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 290px;
+}
+
+.tbody .sid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+}
+
+.tbody .dt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 103px;
+}
+.tbody .dr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+
+.tbody .drnew{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 103px;
+}
+
+.tbody .remark{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+}
+
+.tbody .accept{
+    margin-right: 5px;
+    border: none;
+    background-color: green;
+    border-radius: 5px;
+}
+
+.tbody .reject{
+    margin-left: 5px;
+    border: none;
+    background-color: red;
+    border-radius: 5px;
+
+}
+.tbody button{
+    font-size: 13px;
+    height: 23px;
+    width: 60px;
+    outline: 1px solid #FFFFFF;
+}
+
+.tbody button:hover{
+    background-color: blue;
+}

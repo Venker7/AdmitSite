@@ -5,7 +5,7 @@ import { Home } from './Components/Home';
 import {Routes,Route} from "react-router-dom"
 import { Authentication } from './Authentication';
 function App() {
-  const [IsLogin,setIsLogin]=useState(false);
+  const [IsLogin,setIsLogin]=useState(true);
   const handleLogOut=()=>{
       setTimeout(()=>{
         setIsLogin(false)

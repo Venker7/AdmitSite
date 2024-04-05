@@ -33,7 +33,7 @@
     background-color:transparent;
 }
 .search::placeholder{
-    color: black;
+    color: rgb(78, 77, 77);
 }
 .search-button{
     height: 27.5px;
