@@ -2,9 +2,22 @@ import React, { useEffect, useState } from "react";
 import "./IssuedListContent.css"
 import "./BookTable.css"
 import axios from "axios";
+import { SkeletonIssue } from "./SkeletonIssue";
 
 export const AllIssuedList = () => {
+  const [isLoading,setisLoading]=useState(true);
   const [books,setBooks]=useState([]);
+  const [skeletons,setSkeleton]=useState([]);
+  const [buttonText,setbuttonText]=useState('Accept');
+  const [reject,setReject]=useState('Reject');
+
+  // const skeletonfetch= ()=>{
+  //   const number =  axios.get("https://freetestapi.com/api/v1/books");
+  //   setSkeleton(number.length)
+  //   console.log(skeletons)
+  // }
+
+  // skeletonfetch();
   
   useEffect(()=>{
     const fetchData = async () => {
@@ -13,6 +26,8 @@ export const AllIssuedList = () => {
           const response = await axios.get("https://freetestapi.com/api/v1/books");
           console.log(response)
           setBooks(response.data)
+          setSkeleton(response.data)
+          setisLoading(false)
         } catch(error) {
           console.log(error);
         }
@@ -20,6 +35,8 @@ export const AllIssuedList = () => {
     }
     fetchData();
   },[]);
+  
+
 
   return (
     <div className="content">
@@ -67,7 +84,8 @@ export const AllIssuedList = () => {
           </tr>
         </thead>
         <tbody className="tbody">
-          {books.map((book) => (
+          
+          {isLoading?<SkeletonIssue/>:(books.map((book) => (
             <tr key={book.id} className="BooksRow">
               <td>
                 <div className="name">{book.title}</div>
@@ -92,12 +110,12 @@ export const AllIssuedList = () => {
               </td>
               <td>
                 <div className="remark">
-                  <button className="accept">Accept</button>
-                  <button className="reject">Reject</button>
+                  <button className="accept">{buttonText}</button>
+                  <button className="reject">{reject}</button>
                 </div>
               </td>
             </tr>
-          ))}
+          )))}
         </tbody>
       </table>
     </div>

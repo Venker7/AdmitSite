@@ -10,7 +10,7 @@ export const IssuedBooksNavBar = () => {
             <input className="search" type="text" placeholder="Search..." />
             <button className="search-button"><div className="search-icon"><CiSearch /></div></button>
          <input className="datepicker"type="date" value={date} onChange={(e)=>setDate(e.target.value)}/>
-         <NavLink to='computer' className="issue-link">CSE</NavLink>
+         <NavLink to='returnedbooks' className="issue-link returned">Returned Books</NavLink>
          <NavLink to="electrical"className="issue-link">EE</NavLink>
          <NavLink to="electronics" className="issue-link">ECE</NavLink>
          <NavLink to="civil"className="issue-link">CE</NavLink>

@@ -7,7 +7,6 @@ import { CheckBooks } from "./CheckBooks";
 import { AddBooks } from "./AddBooks";
 import { IssuedBooks } from "./IssuedBooks";
 import { AllIssuedList } from "./IssuedComponents/AllIssuedList";
-import { CSEIssuedBooks } from "./IssuedComponents/CSEIssuedBooks";
 import { EEIssuedBooks } from "./IssuedComponents/EEIssuedBooks";
 import { ECEiIssuedBooks } from "./IssuedComponents/ECEiIssuedBooks";
 import { CEIssuedBooks } from "./IssuedComponents/CEIssuedBooks";
@@ -15,16 +14,17 @@ import { MEIssuedBooks } from "./IssuedComponents/MEIssuedBooks";
 import { BSCIssuedBooks } from "./IssuedComponents/BSCIssuedBooks";
 import { HSIssuedBook } from "./IssuedComponents/HSIssuedBook";
 import { MMIssuedBooks } from "./IssuedComponents/MMIssuedBooks";
+import { ReturnedBooks } from "./IssuedComponents/ReturnedBooks";
 export const Contain = () => {
   return <div className="contain">
     <Header/>
     <Routes>
-        <Route path="/" element={<Dashboard/>}/> 
+        <Route index element={<Dashboard/>}/> 
         <Route path="/checkbooks" element={<CheckBooks/>}/> 
         <Route path="/addbooks" element={<AddBooks/>}/> 
         <Route path="/issuedbooks" element={<IssuedBooks/>}>
             <Route index element={<AllIssuedList/>}/>
-            <Route path="computer" element={<CSEIssuedBooks/>}/>
+            <Route path="returnedbooks" element={<ReturnedBooks/>}/>
             <Route path="electrical" element={<EEIssuedBooks/>}/>
             <Route path="electronics" element={<ECEiIssuedBooks/>}/>
             <Route path="civil" element={<CEIssuedBooks/>}/>

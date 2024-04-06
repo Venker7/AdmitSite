@@ -12,7 +12,7 @@
     height: 380px;
     width: 230px;
     background-color: #BBE2EC;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 .book-image{
@@ -29,7 +29,7 @@ border-radius: 7px;
 }
 
 .book-data{
-    height: 120px;
+    height: 158px;
     background-color: white;
     margin-top: 5px;
     border-radius: 7px;
@@ -41,5 +41,95 @@ font-weight: bold;
 
 .book-data .data{
     margin-left: 10px;
+    margin-top: 9px;
+}
+
+.book-data .button button{
+    width: 100px;
+    height: 25px;
+    background-color: green;
+    border-radius: 7px;
+    border: none;
+}
+.book-data .button button:hover{
+   background-color: blue;
+   cursor: pointer;
+}
+
+.edit{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.336);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-form{
+    height: 370px;
+    width: 400px;
+    background-color: aliceblue;
+    font-size: 14px;
+}
+
+.back{
+    width: 30px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    font-size: 17px;
+    align-items: center;
+    float: right;
+}
+
+.back:hover{
+    background-color: rgba(0, 0, 0, 0.214);
+}
+
+.form-div{
+    margin-top: 40px;
+    width: 400px;
+    height:330px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.editinput{
+    display: flex;
+    flex-direction: column;
     margin-top: 10px;
 }
+.form-div input{
+    background-color: azure;
+    border: none;
+    height: 25px;
+    width: 250px;
+    outline: 1px solid black;
+    color: black;
+    padding-left: 10px;
+}
+.button-update{
+    margin-top: 10px;
+    width: 250px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-update .update{
+    width: 100px;
+    background-color: green;
+    border: none;
+    height: 30px;
+}
+
+.update:hover{
+    background-color: blue;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+

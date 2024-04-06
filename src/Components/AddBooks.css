@@ -114,3 +114,40 @@ margin-left: 52px;
     width: 250px;
     padding: 0px;
 }
+
+.addPop{
+    height: 100%;
+    width: 100%;
+    background-color: #9490a63f;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-pop{
+    height: 300px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+}
+
+.add-success{
+    color: green;
+    font-size: 50px;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-pop p{
+    margin-left: 5px;
+    display: flex;
+    font-size: 19px;
+    align-items: center;
+    height: 50px;
+}

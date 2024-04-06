@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AddBooks.css";
 import { useForm } from "react-hook-form";
+import { FaRegCircleCheck } from "react-icons/fa6";
 
 export const AddBooks = () => {
+  const [addPop,setaddPop]=useState(false);
+  
   const form = useForm();
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
 
   const onAdd = (data) => {
     console.log(data);
+    setTimeout(()=>{
+      setaddPop(true);
+    },2000);
+    setTimeout(()=>{
+      setaddPop(false);
+      window.location.reload();
+    },3000)
+    
+
   };
 
   return (
@@ -35,14 +47,14 @@ export const AddBooks = () => {
             <label htmlFor="department">Department:</label>
             <select {...register("department", { required: "Department is required" })}>
               <option value="">Select the department</option>
-              <option value="computer">Computer Science and Engineering</option>
-              <option value="electrical">Electrical Engineering</option>
-              <option value="electronics">Electronics Engineering</option>
-              <option value="civil">Civil Engineering</option>
-              <option value="mechanical">Mechanical Engineering</option>
-              <option value="basic-science">Basic Science</option>
-              <option value="humanity-science">Humanity Science</option>
-              <option value="management">Management</option>
+              <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+              <option value="Electrical Engineering">Electrical Engineering</option>
+              <option value="Electronics Engineering">Electronics Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Basic Science">Basic Science</option>
+              <option value="Humanity Science">Humanity Science</option>
+              <option value="Management ">Management</option>
             </select>
           </div>
           <p>{errors.department?.message}</p>
@@ -61,6 +73,11 @@ export const AddBooks = () => {
           </div>
         </div>
       </form>
+      {addPop&&<div className="addPop">
+        <div className="add-pop">
+          <div className="add-success"><FaRegCircleCheck /></div>
+        <p>Successfully Added</p></div></div>}
     </div>
+    
   );
 };

@@ -5,3 +5,39 @@
     background-color: #BBE2EC;
     display: flex;
 }
+
+.modal{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.398);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: ease-in-out 2s;
+
+}
+
+.modal div{
+    height: 20px;
+    width: 20px;
+    background-color: rgba(77, 78, 78, 0.595);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal div:hover{
+    background-color: #b7b8b8af;
+    color: black;
+    cursor: pointer;
+}
+
+
+
+.pop{
+    height: 100px;
+    width: 400px;
+    background-color: aliceblue;
+}

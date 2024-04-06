@@ -1,0 +1,134 @@
+td{
+    height: 31px;
+}
+.skeleton-row{
+}
+.skeleton-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+}
+
+.skeleton-name p {
+   height: 16px;
+    width: 300px;
+    background-color: rgb(184, 183, 183);
+    border-radius: 7px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Skeleton animation */
+  @keyframes skeletonShimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .skeleton-row p::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
+    animation: skeletonShimmer 1.5s infinite;
+  }
+  
+
+.skeleton-author{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 290px;
+}
+
+.skeleton-author p{
+   height: 16px;
+    width: 200px;
+    background-color: rgb(184, 183, 183);
+    border-radius: 7px;
+    position: relative;
+    overflow: hidden;
+}
+.skeleton-id{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95px;
+}
+
+.skeleton-id p{
+    width: 25px;
+   height: 16px;
+    background-color: rgb(184, 183, 183);
+    border-radius: 7px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-sid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+}
+
+.skeleton-sid p{
+   height: 16px;
+    width: 75px;
+    background-color: rgb(184, 183, 183);
+    border-radius: 7px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-dt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 103px;
+}
+
+.skeleton-dt p,.skeleton-drnew p{
+   height: 16px;
+    width: 90px;
+    background-color: rgb(184, 183, 183);
+    border-radius: 7px;
+    position: relative;
+    overflow: hidden;
+}
+.skeleton-dr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+
+.skeleton-dr p{
+    width: 90px;
+    background-color: rgb(184, 183, 183);
+   height: 16px;
+    border-radius: 7px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-drnew{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 103px;
+}
+
+.skeleton-remark{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+}
