@@ -19,8 +19,6 @@ export const AddBooks = () => {
       setaddPop(false);
       window.location.reload();
     },3000)
-    
-
   };
 
   return (
@@ -58,16 +56,17 @@ export const AddBooks = () => {
             </select>
           </div>
           <p>{errors.department?.message}</p>
-          <div className="image-upload">
-            <label htmlFor="image">Upload Image:</label>
-            <input type="file" accept="image/*" {...register("image",{required:"Image of the book is required"})} />
-          </div>
-          <p>{errors.image?.message}</p>
           <div className="number">
             <label htmlFor="number">No.of Books:</label>
             <input type="number" {...register("number", { required: "Number of Books is required" })} />
           </div>
           <p>{errors.number?.message}</p>
+          <div className="image-upload">
+            <label htmlFor="image">Upload Image:</label>
+            <input type="file" accept="image/*" {...register("image",{required:"Image of the book is required"})} />
+          </div>
+          <p>{errors.image?.message}</p>
+         
           <div className="button">
             <button>Add</button>
           </div>

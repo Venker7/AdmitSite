@@ -11,13 +11,6 @@ export const AllIssuedList = () => {
   const [buttonText,setbuttonText]=useState('Accept');
   const [reject,setReject]=useState('Reject');
 
-  // const skeletonfetch= ()=>{
-  //   const number =  axios.get("https://freetestapi.com/api/v1/books");
-  //   setSkeleton(number.length)
-  //   console.log(skeletons)
-  // }
-
-  // skeletonfetch();
   
   useEffect(()=>{
     const fetchData = async () => {
@@ -36,6 +29,13 @@ export const AllIssuedList = () => {
     fetchData();
   },[]);
   
+  const renderSkeletons = () => {
+    const skeletons = [];
+    for (let i = 0; i < 15; i++) {
+      skeletons.push(<SkeletonIssue key={i} />);
+    }
+    return skeletons;
+  }
 
 
   return (
@@ -85,7 +85,7 @@ export const AllIssuedList = () => {
         </thead>
         <tbody className="tbody">
           
-          {isLoading?<SkeletonIssue/>:(books.map((book) => (
+          {isLoading?(renderSkeletons()):(books.map((book) => (
             <tr key={book.id} className="BooksRow">
               <td>
                 <div className="name">{book.title}</div>

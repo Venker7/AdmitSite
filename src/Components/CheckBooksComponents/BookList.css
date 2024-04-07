@@ -1,24 +1,27 @@
 .booklist{
     height: 100%;
     width: 100%;
-    background-color: #BBE2EC;
+    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);     display: grid;
     overflow: scroll;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 350px  350px 350px 300px; 
+    grid-row-gap: 100px;
+    gap: 60px 0px;   
 }
 
 .bookcard{
     height: 380px;
     width: 230px;
-    background-color: #BBE2EC;
     margin-top: 50px;
+    margin-left: 100px;
 }
 
 .book-image{
     height: 253px;
-    background-color: #BBE2EC;
+    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);     display: grid;
     border-radius: 7px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+
 }
 
 .book-image img{
@@ -30,18 +33,36 @@ border-radius: 7px;
 
 .book-data{
     height: 158px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.699);
     margin-top: 5px;
     border-radius: 7px;
     font-size: 12px;
-font-weight: bold;  
+   font-weight: bold;  
   display: flex;
     flex-direction: column;
+    transition: transform 0s ease; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+
 }
 
+.book-data:hover{
+    height: 160px ;
+    width: 300px;
+    transform: translateX(-35px);
+
+}
+#book-name{
+    height: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    margin-top: 7px;
+}
 .book-data .data{
+    display: flex;
     margin-left: 10px;
-    margin-top: 9px;
+    margin-top: 2px;
+
 }
 
 .book-data .button button{
@@ -63,14 +84,14 @@ font-weight: bold;
     background-color: rgba(0, 0, 0, 0.336);
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .edit-form{
-    height: 370px;
+    height: 500px;
     width: 400px;
     background-color: aliceblue;
     font-size: 14px;
+    margin-top: 70px;
 }
 
 .back{
@@ -88,7 +109,7 @@ font-weight: bold;
 }
 
 .form-div{
-    margin-top: 40px;
+    margin-top: 30px;
     width: 400px;
     height:330px;
     display: flex;
@@ -109,6 +130,11 @@ font-weight: bold;
     outline: 1px solid black;
     color: black;
     padding-left: 10px;
+}
+.editinput .upload-image{
+    height: 20px;
+    width: 200px;
+    padding: 0px;
 }
 .button-update{
     margin-top: 10px;
@@ -132,4 +158,32 @@ font-weight: bold;
     cursor: pointer;
 }
 
+.edit-department{
+    background-color: transparent;
+    color: black;
+    height: 25px;
+    border: none;
+    outline: 1px solid black;
+}
 
+.update-success{
+    background-color: aliceblue;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    font-size: 20px;
+    margin-top: 200px;
+}
+.update-success p{
+    margin-left: 10px;
+}
+.success{
+    color: green;
+    font-size: 50px;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

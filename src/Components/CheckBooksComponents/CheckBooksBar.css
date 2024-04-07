@@ -6,6 +6,10 @@
     background-color: #FBF9F1;
 }
 
+.checkbookbar input{
+    background-color: rgba(200, 198, 196, 0.541);
+}
+
 .checkbookbar select{
     margin-left: 10px;
     color: black;

@@ -1,13 +1,13 @@
-.card{
+.card {
     height: 180px;
     width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    outline: 1px solid black;
-    margin-left: 20px;
-    margin-top: 20px;
-    background-color: #F2FFE9;
+    font-size: 20px;
+    margin-left: 150px;
+    margin-top: 70px;
+    border-radius: 10px;
+    background-image: linear-gradient(45deg, #e3eeff 0%, #f6dfe3 99%, #e3eeff 100%);    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
-

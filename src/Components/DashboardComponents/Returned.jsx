@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-export const Returned = () => {
+export const Returned = ({openmodal}) => {
     const [Return,setReturn]=useState(0);
-  return <div className="card"><p>Returned Books</p>{Return}</div>;
+    const returnpop =()=>{
+      openmodal()
+    }
+  return <div className="card" onClick={returnpop}><p>Returned Books</p>{Return}</div>;
 };

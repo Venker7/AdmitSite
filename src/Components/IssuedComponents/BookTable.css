@@ -61,9 +61,10 @@ outline: 1px solid black;
     background-color: #a4a3a3;
 }
 .BooksRow:hover{
-    background-color: #c6dbc4;
-    color: rgb(210, 98, 23);
+    background-color: #c6dbc4b7;
+    color: rgb(54, 65, 221);
     font-size: 15px;
+    outline: 1px solid black;
 }
 .tbody .id{
     display: flex;
@@ -124,14 +125,14 @@ outline: 1px solid black;
     margin-right: 5px;
     border: none;
     background-color: green;
-    border-radius: 5px;
+    
 }
 
 .tbody .reject{
     margin-left: 5px;
     border: none;
     background-color: red;
-    border-radius: 5px;
+  
 
 }
 .tbody button{
@@ -139,6 +140,7 @@ outline: 1px solid black;
     height: 23px;
     width: 60px;
     outline: 1px solid #FFFFFF;
+    border-radius: 5px;
 }
 
 .tbody button:hover{

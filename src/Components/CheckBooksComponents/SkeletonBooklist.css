@@ -1,0 +1,65 @@
+.skeleton-bookcard{
+    height: 380px;
+    width: 230px;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.skeleton-bookimage{
+    height: 253px;
+    background-color: #aabacb68;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.skeleton-bookdata{
+    height: 158px;
+    background-color: rgba(156, 168, 173, 0.841);
+    margin-top: 5px;
+    font-size: 12px;
+font-weight: bold;  
+  display: flex;
+    flex-direction: column;
+}
+
+.skeleton-bookdata p{
+  background-color: #aabacb68;
+  width: 210px;
+    height: 20px;
+    margin-top: 9px;
+    margin-left: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-bookdata p::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
+    animation: skeletonShimmer 1.7s infinite;
+  }
+@keyframes skeletonShimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .skeleton-bookimage::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
+    animation: skeletonShimmer 1.5s infinite;
+  }
+  
