@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios"
+import { CardSkeleton } from "./CardSkeleton";
 
 export const TotalBooks = () => {
   const [totalbooks,setTotalBooks]=useState([]);
+  const [isLoading,setLoading]=useState(true);
 
     useEffect(()=>{
       const fetchData = async ()=>{
@@ -11,6 +13,7 @@ export const TotalBooks = () => {
               const response = await axios.get("https://freetestapi.com/api/v1/books")
               console.log(response)
               setTotalBooks(response.data)
+              setLoading(false)
           }
           catch(error){
               console.log(error)
@@ -19,5 +22,5 @@ export const TotalBooks = () => {
       }
       fetchData();
     },[])
-  return <div className="card"><p>Total Books</p>{totalbooks.length}</div>;
+  return <div className="card"><p>Total Books</p>{isLoading?<CardSkeleton/>:totalbooks.length}</div>;
 };

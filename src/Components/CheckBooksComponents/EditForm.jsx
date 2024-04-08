@@ -22,10 +22,11 @@ const useForm = (initialState) => {
 
 export const EditForm = ({ book,onSuccess }) => {
   // Initialize form state with the initial values from the book object
-  const { title: initialTitle, author: initialAuthor } = book;
+  const { title: initialTitle, author: initialAuthor ,id:initialID } = book;
   const { formData, handleChange } = useForm({
     title: initialTitle,
     author: initialAuthor,
+    id:initialID,
     department: "",
     total: "",
     available: "",
@@ -64,6 +65,13 @@ export const EditForm = ({ book,onSuccess }) => {
           />
         </div>
         <div className="editinput">
+          <label htmlFor="name">BookID:</label>
+          <input type="text" 
+          name="id"
+          value={formData.id}
+          onChange={handleChange}/>
+          </div>
+        <div className="editinput">
           <label htmlFor="name">Department:</label>
           <select
             name="department"
@@ -72,14 +80,14 @@ export const EditForm = ({ book,onSuccess }) => {
             onChange={handleChange}
           >
             <option value="">Select Department to Search</option>
-            <option value="">Computer and Engineering</option>
-            <option value="">Electrical Engineering</option>
-            <option value="">Electronics Engineering</option>
-            <option value="">Civil Engineering</option>
-            <option value="">Mechanical Engineering</option>
-            <option value="">Basic Science</option>
-            <option value="">Humanity Science</option>
-            <option value="">Management</option>
+            <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+            <option value="Electrical Engineering">Electrical Engineering</option>
+            <option value="Electronics Engineering">Electronics Engineering</option>
+            <option value="Civil Engineering">Civil Engineering</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+            <option value="Basic Science">Basic Science</option>
+            <option value="Humanity Science">Humanity Science</option>
+            <option value="Management">Management</option>
           </select>
         </div>
         <div className="editinput">

@@ -5,9 +5,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    cursor: pointer;
     font-size: 20px;
     margin-left: 150px;
-    margin-top: 70px;
+    margin-top: 40px;
     border-radius: 10px;
-    background-image: linear-gradient(45deg, #e3eeff 0%, #f6dfe3 99%, #e3eeff 100%);    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    background-image: linear-gradient(45deg, #e3eeff 0%, #f3f7c9 99%, #e3eeff 100%); 
+     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1); 
 }

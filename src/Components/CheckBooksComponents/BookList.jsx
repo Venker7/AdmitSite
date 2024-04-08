@@ -6,7 +6,7 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { RxCross1 } from "react-icons/rx";
 import { SkeletonBooklist } from "./SkeletonBooklist";
 import { EditForm } from "./EditForm";
-export const BookList = () => {
+export const BookList = ({searchItem}) => {
   const [books,setBooks]=useState([]);
   const [editbooks,setEditBooks]=useState({})
   const [EditPop,setEditPop]=useState(false);
@@ -63,8 +63,15 @@ export const BookList = () => {
     }
     fetchData();
   },[])
+  const filteredBooks = books.filter((book) => {
+    const searchValue = String(searchItem).toLowerCase(); // Convert searchItem to lowercase string
+    const idMatch = String(book.id).toLowerCase().includes(searchValue); // Check if id matches
+    const titleMatch = book.title.toLowerCase().includes(searchValue); // Check if title matches
+    const authorMatch = book.author.toLowerCase().includes(searchValue); // Check if author matches
+    return idMatch || titleMatch || authorMatch; // Return true if any of the matches
+  });
   return <div className="booklist">
-    {isLoading?(renderSkeletons()):shuffleArray(books).map((book)=>(
+    {isLoading?(renderSkeletons()):filteredBooks.map((book)=>(
      <div className="bookcard" key={book.id}>
      <div className="book-image">
       <img src={image} alt="" />

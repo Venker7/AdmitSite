@@ -19,7 +19,6 @@ td{
     overflow: hidden;
   }
   
-  /* Skeleton animation */
   @keyframes skeletonShimmer {
     0% {
       transform: translateX(-100%);
@@ -63,7 +62,7 @@ td{
 }
 
 .skeleton-id p{
-    width: 25px;
+    width: 45px;
    height: 16px;
    background-color: rgb(178, 179, 179);
     position: relative;

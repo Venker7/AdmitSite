@@ -16,7 +16,7 @@
     align-items: center;
     justify-content: center;
     color: black;
-
+    transition: pop-up 5s ease-out;
 }
 
 .back-pop{
@@ -48,4 +48,5 @@
     background-color: white;
     height: 600px;
     width: 750px;
+    transition: 5s ease-out;
 }
