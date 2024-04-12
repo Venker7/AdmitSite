@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./BookList.css";
+import Swal from "sweetalert2"
 
 // Custom hook to manage form state
 const useForm = (initialState) => {
   const [formData, setFormData] = useState(initialState);
-
+ 
   // Function to handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,7 +21,8 @@ const useForm = (initialState) => {
   };
 };
 
-export const EditForm = ({ book,onSuccess }) => {
+export const EditForm = ({book,onUpdate}) => {
+  
   // Initialize form state with the initial values from the book object
   const { title: initialTitle, author: initialAuthor ,id:initialID } = book;
   const { formData, handleChange } = useForm({
@@ -28,7 +30,7 @@ export const EditForm = ({ book,onSuccess }) => {
     author: initialAuthor,
     id:initialID,
     department: "",
-    total: "",
+    totalCopies: "",
     available: "",
   });
 
@@ -36,11 +38,30 @@ export const EditForm = ({ book,onSuccess }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
-    console.log("Form submitted:", formData);
-    setTimeout(()=>{
-        onSuccess()
-    },2000)
-
+    
+ 
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Save",
+      denyButtonText: `Don't save`,
+      confirmButtonColor:'green'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          icon: "success",
+          title: "Updated Successfully",
+          showConfirmButton: false,
+          timer: 3000,
+          iconColor:'green'
+        }) 
+        console.log("Form submitted:", formData);
+        onUpdate()
+      } else if (result.isDenied) {
+        Swal.fire({icon:'info',title:'Changes are not saved',showConfirmButton:false,timer:3000});
+      }
+    });
   };
 
   return (
@@ -94,7 +115,7 @@ export const EditForm = ({ book,onSuccess }) => {
           <label htmlFor="name">Total:</label>
           <input
             type="number"
-            name="total"
+            name="total no. of books"
             value={formData.total}
             onChange={handleChange}
           />
@@ -103,7 +124,7 @@ export const EditForm = ({ book,onSuccess }) => {
           <label htmlFor="name">No.of available:</label>
           <input
             type="number"
-            name="available"
+            name="no. of copies available"
             value={formData.available}
             onChange={handleChange}
           />

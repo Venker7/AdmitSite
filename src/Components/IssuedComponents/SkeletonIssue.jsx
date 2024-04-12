@@ -26,7 +26,6 @@ export const SkeletonIssue = () => {
             <td>
                 <div className="remark">
                     <button className="skeleton-accept"></button>
-                    <button className="skeleton-reject"></button>
                 </div>
             </td>
         </tr>;

@@ -4,6 +4,7 @@
     margin-left: 20px;
     margin-top: 20px;
     background-color:#FFFFFF;
+    table-layout: auto;
 }
 
 .table .thead{
@@ -13,8 +14,7 @@ font-size: 14px;
 color: #FFFFFF;
 display: flex;
 align-items: center;
-outline: 1px solid black;
-
+outline: 2px solid white;
 }
 
 .table .thead div{
@@ -23,6 +23,7 @@ outline: 1px solid black;
     justify-content: center;
     align-items: center;
     background-color: #40A2E3;
+
 }
 
 .table .thead .name{
@@ -45,13 +46,12 @@ outline: 1px solid black;
 }
 
 .tbody{
-    height: 560px;
+    height: 570px;
     background-color: #dad7d7;
     font-size: 14px;
     display: flex;
     flex-direction: column;
   overflow: scroll;
-  outline: 1px solid rgb(59, 59, 59);
 }
 .tbody td{
     height: 31px;
@@ -64,7 +64,6 @@ outline: 1px solid black;
     background-color: #c6dbc4b7;
     color: rgb(54, 65, 221);
     font-size: 15px;
-    outline: 1px solid black;
 }
 .tbody .id{
     display: flex;
@@ -122,14 +121,14 @@ outline: 1px solid black;
 }
 
 .tbody .accept{
-    margin-right: 5px;
+    width: 80px;
     border: none;
-    background-color: green;
+    background-color: red;
     
 }
 
 .tbody .reject{
-    margin-left: 5px;
+    
     border: none;
     background-color: red;
   

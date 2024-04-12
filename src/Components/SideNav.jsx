@@ -55,12 +55,13 @@ export const SideNav = ({onLogOut}) => {
              <p>IssuedBooks</p>
              </NavLink>
             </div>
+            
            </nav>
 
             <div className="logout" onClick={handlelogout}> 
             
-            <div style={{ fontSize: '30px' }}> 
-            <RiLogoutCircleLine/>
+              <div style={{ fontSize: '30px' }}> 
+              <RiLogoutCircleLine/>
              </div>
              <p>Logout</p>
 

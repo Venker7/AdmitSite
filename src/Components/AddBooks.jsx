@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./AddBooks.css";
 import { useForm } from "react-hook-form";
-import { FaRegCircleCheck } from "react-icons/fa6";
-
+import Swal from "sweetalert2"
 export const AddBooks = () => {
-  const [addPop,setaddPop]=useState(false);
+ 
   
   const form = useForm();
   const { register, handleSubmit, formState } = form;
@@ -13,10 +12,15 @@ export const AddBooks = () => {
   const onAdd = (data) => {
     console.log(data);
     setTimeout(()=>{
-      setaddPop(true);
-    },2000);
+      Swal.fire({
+        icon: "success",
+        title: "Added Successfully",
+        showConfirmButton: false,
+        iconColor:'green',
+        timer:3000
+      }) 
+    },2000)
     setTimeout(()=>{
-      setaddPop(false);
       window.location.reload();
     },3000)
   };
@@ -72,10 +76,7 @@ export const AddBooks = () => {
           </div>
         </div>
       </form>
-      {addPop&&<div className="addPop">
-        <div className="add-pop">
-          <div className="add-success"><FaRegCircleCheck /></div>
-        <p>Successfully Added</p></div></div>}
+      
     </div>
     
   );

@@ -1,6 +1,6 @@
 .content{
     height: 100vh;
-    background-color: #BBE2EC;
+    background-image: linear-gradient(to top, #9fbde0 0%, #d7e7ff 100%); 
     overflow: scroll;
     position: relative;
     font-size: 30px;

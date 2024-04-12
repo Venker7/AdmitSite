@@ -1,0 +1,49 @@
+.prebooked-table{
+    height: 83%;
+    width: 95%;
+    margin-left: 20px;
+    margin-top: 20px;
+    background-color:#FFFFFF;
+    table-layout: auto;
+}
+
+.prebooked-table thead{
+    height: 35px;
+background-color:#dad7d7;
+font-size: 14px;
+color: #FFFFFF;
+display: flex;
+align-items: center;
+outline: 2px solid white;
+cursor: pointer;
+
+}
+
+.prebooked-table .prebooked-thead div{
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #40A2E3;
+}
+
+.prebooked-table .prebooked-thead .prebooked-name{
+    width: 400px;
+}
+.prebooked-author{
+    width: 290px;
+}
+.prebooked-bookID{
+    width: 90px;
+}
+.prebooked-studentname{
+    width: 320px;
+}
+.prebooked-studentID{
+    width: 120px;
+}
+.prebooked-date{
+    width: 120px;
+}
+
+

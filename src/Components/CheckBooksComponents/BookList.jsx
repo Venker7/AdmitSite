@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./BookList.css"
 import image from './Algorithm.jpg'
 import axios from "axios";
-import { FaRegCircleCheck } from "react-icons/fa6";
 import { RxCross1 } from "react-icons/rx";
 import { SkeletonBooklist } from "./SkeletonBooklist";
 import { EditForm } from "./EditForm";
@@ -11,8 +10,6 @@ export const BookList = ({searchItem}) => {
   const [editbooks,setEditBooks]=useState({})
   const [EditPop,setEditPop]=useState(false);
   const [isLoading,setisLoading]=useState(true)
-  const [isupdate,setupdate]=useState(false);
-
   const editbookdata =(books)=>{
     console.log(books)
     setEditBooks(books)
@@ -30,14 +27,7 @@ export const BookList = ({searchItem}) => {
     return skeletons;
   }
 
-  const UpdatePopup = ()=>{
-    setupdate(true);
-    setTimeout(()=>{
-      setupdate(false)
-      setEditPop(false)
-    },2000)
-  }
-
+ 
   const shuffleArray = (array) => {
 
     for (let i = array.length - 1; i > 0; i--) {
@@ -54,7 +44,6 @@ export const BookList = ({searchItem}) => {
               const response = await axios.get("https://freetestapi.com/api/v1/books") 
               console.log(response)
               setBooks(response.data)
-              
               setisLoading(false);
           }catch(error){
             console.log(error)
@@ -63,6 +52,7 @@ export const BookList = ({searchItem}) => {
     }
     fetchData();
   },[])
+  
   const filteredBooks = books.filter((book) => {
     const searchValue = String(searchItem).toLowerCase(); // Convert searchItem to lowercase string
     const idMatch = String(book.id).toLowerCase().includes(searchValue); // Check if id matches
@@ -70,6 +60,7 @@ export const BookList = ({searchItem}) => {
     const authorMatch = book.author.toLowerCase().includes(searchValue); // Check if author matches
     return idMatch || titleMatch || authorMatch; // Return true if any of the matches
   });
+  
   return <div className="booklist">
     {isLoading?(renderSkeletons()):filteredBooks.map((book)=>(
      <div className="bookcard" key={book.id}>
@@ -88,15 +79,11 @@ export const BookList = ({searchItem}) => {
     ))}
    {EditPop &&  
      <div className="edit">
-      {isupdate?<div className="update-success">
-         <div className="success"><FaRegCircleCheck /></div>
-         <p>Updated Successfully</p>
-        </div>:
       <div className="edit-form">
         <div className="back" onClick={closeform}><RxCross1 /></div>
-        <EditForm book={editbooks} onSuccess={UpdatePopup}/>
+        <EditForm book={editbooks} onUpdate={closeform}/>
       </div>
-      }
+      
      </div>}
   </div>;
 };

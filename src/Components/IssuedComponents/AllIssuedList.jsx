@@ -7,9 +7,8 @@ import { SkeletonIssue } from "./SkeletonIssue";
 export const AllIssuedList = () => {
   const [isLoading,setisLoading]=useState(true);
   const [books,setBooks]=useState([]);
-  const [skeletons,setSkeleton]=useState([]);
-  const [buttonText,setbuttonText]=useState('Accept');
-  const [reject,setReject]=useState('Reject');
+  const [buttonText,setbuttonText]=useState([]);
+  const [isAccepted,setAccept]=useState(false)
 
   
   useEffect(()=>{
@@ -19,8 +18,8 @@ export const AllIssuedList = () => {
           const response = await axios.get("https://freetestapi.com/api/v1/books");
           console.log(response)
           setBooks(response.data)
-          setSkeleton(response.data)
           setisLoading(false)
+          setbuttonText(response.data.map(()=>'Accept'))
         } catch(error) {
           console.log(error);
         }
@@ -31,13 +30,17 @@ export const AllIssuedList = () => {
   
   const renderSkeletons = () => {
     const skeletons = [];
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 50; i++) {
       skeletons.push(<SkeletonIssue key={i} />);
     }
     return skeletons;
   }
 
-
+  const handleButtontext =(index)=>{
+    const newButtonTexts = [...buttonText];
+    newButtonTexts[index]='Accepted';
+    setbuttonText(newButtonTexts)
+  }
   return (
     <div className="content">
       <table className="table">
@@ -85,7 +88,7 @@ export const AllIssuedList = () => {
         </thead>
         <tbody className="tbody">
           
-          {isLoading?(renderSkeletons()):(books.map((book) => (
+          {isLoading?(renderSkeletons()):(books.map((book,index) => (
             <tr key={book.id} className="BooksRow">
               <td>
                 <div className="name">{book.title}</div>
@@ -110,8 +113,8 @@ export const AllIssuedList = () => {
               </td>
               <td>
                 <div className="remark">
-                  <button className="accept">{buttonText}</button>
-                  <button className="reject">{reject}</button>
+                  <button className="accept" onClick={()=>handleButtontext(index)} style={{backgroundColor:buttonText[index]==='Accepted'?'green':'red'}} onMouseEnter={(e)=>{e.target.style.backgroundColor='blue'}} onMouseLeave={(e)=>{e.target.style.backgroundColor=buttonText[index]=='Accepted'?'green':'red'}}>{buttonText[index]}</button>
+                 
                 </div>
               </td>
             </tr>

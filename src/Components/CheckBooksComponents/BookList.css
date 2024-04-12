@@ -6,7 +6,7 @@
     display: grid;
     grid-template-columns: 350px  350px 350px 300px; 
     grid-row-gap: 100px;
-    gap: 60px 0px;   
+    gap: 60px 0px; 
 }
 
 .bookcard{
@@ -186,4 +186,8 @@ border-radius: 7px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.save-button{
+    background-color: green;
 }
