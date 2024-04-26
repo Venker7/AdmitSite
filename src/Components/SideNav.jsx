@@ -48,14 +48,6 @@ export const SideNav = ({onLogOut}) => {
                 </NavLink>
             </div>
             <div id="nav">
-                <NavLink className="link" to='/issuedbooks'>
-                     <div style={{ fontSize: '30px' }}> 
-                <FaBookBookmark />
-             </div>
-             <p>IssuedBooks</p>
-             </NavLink>
-            </div>
-            <div id="nav">
                 <NavLink className="link" to='/issuedform'>
                      <div style={{ fontSize: '30px' }}> 
                 <FaBookBookmark />
@@ -63,6 +55,15 @@ export const SideNav = ({onLogOut}) => {
              <p>IssuedBooks</p>
              </NavLink>
             </div>
+            <div id="nav">
+                <NavLink className="link" to='/issuedbooks'>
+                     <div style={{ fontSize: '30px' }}> 
+                <FaBookBookmark />
+             </div>
+             <p>IssuedBooks</p>
+             </NavLink>
+            </div>
+            
            </nav>
 
             <div className="logout" onClick={handlelogout}> 

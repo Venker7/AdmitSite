@@ -1,0 +1,87 @@
+.form-container{
+
+    width: 100%;
+    height: 100%;
+    background-color: rgb(207, 225, 232);
+    overflow: scroll;
+}
+
+.issuedForm{
+    height: 550px;
+    width: 500px;
+    background-color: white;
+    margin-left: 32rem;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.issuedForm h2{
+    margin-top: 20px;
+}
+.bookname,.book-author,.ID{
+margin-top: 10px;
+}
+.issuedForm .input{
+    width: 350px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    outline: 1px solid blue;
+    color: black;
+    padding-left: 10px;
+}
+
+.upload{
+    margin-top: 20px;
+    border: none;
+    height: 30px;
+    width: 200px;
+    background-color: blue;
+    cursor: pointer;
+}
+
+.add-more{
+    margin-top: 30px;
+    border: none;
+    height: 30px;
+    width: 200px;
+    background-color: rgb(30, 255, 0);
+    cursor: pointer;
+}
+
+.add-one{
+    margin-top: 30px;
+    border: none;
+    height: 30px;
+    width: 200px;
+    background-color: rgb(255, 166, 0);
+    margin-left: 80px;
+    cursor: pointer;
+}
+
+.adding1{
+    height: 800px; 
+}
+.adding2{
+    height: 1000px;
+}
+.adding3{
+    height: 800px;
+}
+.cancel{
+    height: 20px;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.registration-number{
+    margin-top: 20px;
+}
+.department{
+    margin-top: 10px;
+}
