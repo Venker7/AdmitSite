@@ -4,13 +4,12 @@ import "./BookTable.css"
 import axios from "axios";
 import { SkeletonIssue } from "./SkeletonIssue";
 
-export const AllIssuedList = () => {
+export const AllIssuedList = ({searchitem}) => {
   const [isLoading,setisLoading]=useState(true);
   const [books,setBooks]=useState([]);
   const [buttonText,setbuttonText]=useState([]);
   const [isAccepted,setAccept]=useState(false)
-
-  
+  console.log(searchitem)
   useEffect(()=>{
     const fetchData = async () => {
       setTimeout(async()=>{

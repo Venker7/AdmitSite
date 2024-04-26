@@ -6,7 +6,6 @@ export const CheckBooks = () => {
   const[searchItem,setsearchItem]=useState("");
   const handlesearch=(searchValue)=>{
     setsearchItem(searchValue);
-    console.log(searchValue)
   }
   return <div className="checkbooks">
     <CheckBooksBar onSearch={handlesearch}/>

@@ -60,13 +60,13 @@
     background-color: rgb(166, 174, 182);
 }
 .nav{
-    height: 230px;
+    height: 300px;
     margin-top: 40px;
     display: grid;
     align-items: center;
 }
 .open .nav{
-    height: 230px;
+    height: 300px;
     margin-top: 40px;
     display: grid;
     justify-content: center;
@@ -85,7 +85,7 @@
 .logout{
     height: 35px;
     width: 85%;
-    margin-top: 365px;
+    margin-top: 300px;
     background-color: #FFFFFF;
     display: flex;
     padding: 10px;

@@ -1,0 +1,88 @@
+.table-header{
+    height: 30px;
+    background-color: rgba(11, 95, 150, 0.769);
+    color: white;
+}
+.table-header th{
+  
+}
+.student-name{
+    width: 350px;
+    border-radius: 7px 0px 0px 0px;
+}
+
+.student-department{
+    width: 100px;
+}
+.student-reg.no{
+    width: 130px;
+}
+.entry{
+    width: 100px;
+}
+.date{
+width: 100px;
+}
+.exit{
+    width: 100px;
+    border-radius: 0px 7px 0px 0px;
+    margin-right: 10px;
+}
+
+.table-body{
+    position: absolute;
+    width: 55rem;
+
+    height: 28rem;
+    overflow: scroll;
+}
+.table-body tr{
+    background-color: rgba(75, 75, 75, 0.222);
+}
+.table-body tr:hover{
+    background-color: rgba(165, 42, 42, 0.257);
+}
+.table-body .name{
+    width: 349px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.table-body .department{
+    width: 99.5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.table-body .date{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.table-body .ID{
+    width: 107px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-body .entry-time{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.table-body .exit-time{
+    width: 86px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

@@ -19,7 +19,7 @@ export const Contain = () => {
         <Route path="/checkbooks" element={<CheckBooks/>}/> 
         <Route path="/addbooks" element={<AddBooks/>}/> 
         <Route path="/issuedbooks" element={<IssuedBooks/>}>
-            <Route index element={<AllIssuedList/>}/>
+            <Route index element={<AllIssuedList />}/>
             <Route path="returnedbooks" element={<ReturnedBooks/>}/>
             <Route path="requestbooks" element={<StudentRequestBooks/>}/>
             <Route path="overdue" element={<OverdueBooks/>}/>

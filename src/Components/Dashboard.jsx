@@ -5,6 +5,8 @@ import { Borrowed } from "./DashboardComponents/Borrowed";
 import { Returned } from "./DashboardComponents/Returned";
 import { OverDue } from "./DashboardComponents/OverDue";
 import { RxCross1 } from "react-icons/rx";
+import { Attendance } from "./DashboardComponents/Attendance";
+import { Chart } from "./DashboardComponents/Chart";
 
 export const Dashboard = () => {
   const [modal,setModal]=useState(false);
@@ -15,10 +17,16 @@ setModal(true);
   setModal(false)
  }
   return <div className="dashboard">
-    <TotalBooks/>
+   <div className="card-div">
+   <TotalBooks/>
     <Borrowed/>
     <Returned openmodal={openmodal}/>
     <OverDue openmodal={openmodal}/>
+   </div>
+   <div className="attendance-div">
+    <Attendance/>
+    <Chart/>
+   </div>
     {modal&&<div className="modal" onClick={modalclose}>
       <div className="pop-up">
         <div className="back-pop" onClick={modalclose}><RxCross1/></div>

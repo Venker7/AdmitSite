@@ -10,12 +10,12 @@ export const BookList = ({searchItem}) => {
   const [editbooks,setEditBooks]=useState({})
   const [EditPop,setEditPop]=useState(false);
   const [isLoading,setisLoading]=useState(true)
-  const editbookdata =(books)=>{
-    console.log(books)
-    setEditBooks(books)
+  const editbookdata =(book)=>{
+    console.log(book)
+    setEditBooks(book)
     setEditPop(true);
   }
-
+console.log(searchItem);
   const closeform =()=>{
     setEditPop(false)
   }
@@ -73,7 +73,9 @@ export const BookList = ({searchItem}) => {
        <div className="data">ID:{book.id}</div>
        <div className="data">Total Copies:10</div>
        <div className="data">No. of copies available:5</div>
-       <div className="button"><button onClick={()=>editbookdata(book)}>Edit</button></div>
+       <div className="button">
+        <button onClick={()=>editbookdata(book)}>Edit</button>
+        </div>
      </div>
    </div>
     ))}
