@@ -44,7 +44,7 @@ td{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 290px;
+    width: 260px;
 }
 
 .skeleton-author p{
@@ -129,7 +129,7 @@ td{
 
 .skeleton-row button{
     height: 23px;
-    width: 80px;
+    width: 100px;
     border: none;
 }
 .skeleton-accept{

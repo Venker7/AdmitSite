@@ -18,7 +18,7 @@ export const AllIssuedList = ({searchitem}) => {
           console.log(response)
           setBooks(response.data)
           setisLoading(false)
-          setbuttonText(response.data.map(()=>'Accept'))
+          setbuttonText(response.data.map(()=>'Not Submitted'))
         } catch(error) {
           console.log(error);
         }
@@ -37,7 +37,7 @@ export const AllIssuedList = ({searchitem}) => {
 
   const handleButtontext =(index)=>{
     const newButtonTexts = [...buttonText];
-    newButtonTexts[index]='Accepted';
+    newButtonTexts[index]='Submitted';
     setbuttonText(newButtonTexts)
   }
   return (
@@ -112,7 +112,7 @@ export const AllIssuedList = ({searchitem}) => {
               </td>
               <td>
                 <div className="remark">
-                  <button className="accept" onClick={()=>handleButtontext(index)} style={{backgroundColor:buttonText[index]==='Accepted'?'green':'red'}} onMouseEnter={(e)=>{e.target.style.backgroundColor='blue'}} onMouseLeave={(e)=>{e.target.style.backgroundColor=buttonText[index]=='Accepted'?'green':'red'}}>{buttonText[index]}</button>
+                  <button className="accept" onClick={()=>handleButtontext(index)} style={{backgroundColor:buttonText[index]==='Submitted'?'green':'red'}} onMouseEnter={(e)=>{e.target.style.backgroundColor='blue'}} onMouseLeave={(e)=>{e.target.style.backgroundColor=buttonText[index]=='Submitted'?'green':'red'}}>{buttonText[index]}</button>
                  
                 </div>
               </td>

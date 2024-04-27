@@ -44,10 +44,10 @@ useEffect(()=>{
         <div className="name">{attendance.name}</div>
       </td>
       <td>
-        <div className="department">{attendance.gender}</div>
+        <div className="branch">CSE</div>
       </td>
       <td>
-        <div className="ID">{attendance.id}</div>
+        <div className="SID">2001CS0202</div>
       </td>
       <td>
         <div className="date">24/4/2024</div>

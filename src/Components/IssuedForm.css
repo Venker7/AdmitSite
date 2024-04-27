@@ -32,6 +32,7 @@ margin-top: 10px;
     outline: 1px solid blue;
     color: black;
     padding-left: 10px;
+    font-size: 14px;
 }
 
 .upload{
@@ -48,7 +49,7 @@ margin-top: 10px;
     border: none;
     height: 30px;
     width: 200px;
-    background-color: rgb(30, 255, 0);
+    background-color: green;
     cursor: pointer;
 }
 
@@ -57,9 +58,13 @@ margin-top: 10px;
     border: none;
     height: 30px;
     width: 200px;
-    background-color: rgb(255, 166, 0);
+    background-color: green;
     margin-left: 80px;
     cursor: pointer;
+}
+
+.add-one:hover,.add-more:hover{
+    background-color:brown;
 }
 
 .adding1{
@@ -72,16 +77,24 @@ margin-top: 10px;
     height: 800px;
 }
 .cancel{
-    height: 20px;
-    background-color: red;
+    width:70px;
+    height: 25px;
+    background-color: rgb(0, 255, 38);
     border: none;
     border-radius: 5px;
     margin-top: 20px;
     cursor: pointer;
+}
+.cancel:hover{
+    background-color: red;
 }
 .registration-number{
     margin-top: 20px;
 }
 .department{
     margin-top: 10px;
+}
+
+#book2{
+    margin-top: 30px;
 }

@@ -19,7 +19,7 @@ export const IssuedBooksNavBar = ({onsearch}) => {
             <input className="search" type="text" placeholder="Search..." onChange={handlesearch}/>
             <button className="search-button"><div className="search-icon"><CiSearch /></div></button>
          <input className="datepicker"type="date" value={date} onChange={(e)=>setDate(e.target.value)}/>
-         <NavLink to='prebooked' className="issue-link prebooked" onClick={handleNotification}>PreBooked List {isnotification&&<div className="notification-badge">{notification}</div>} </NavLink>
+         <NavLink to='prebooked' className="issue-link prebooked" onClick={handleNotification}>Renew Book List {isnotification&&<div className="notification-badge">{notification}</div>} </NavLink>
          <NavLink to='returnedbooks' className="issue-link returned">Returned Books</NavLink>
          <NavLink to="overdue" className="issue-link">Overdue</NavLink>
          <NavLink to="requestbooks"className="issue-link requested">Student Request Books</NavLink>

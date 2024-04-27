@@ -3,9 +3,7 @@
     background-color: rgba(11, 95, 150, 0.769);
     color: white;
 }
-.table-header th{
-  
-}
+
 .student-name{
     width: 350px;
     border-radius: 7px 0px 0px 0px;
@@ -31,16 +29,18 @@ width: 100px;
 
 .table-body{
     position: absolute;
-    width: 55rem;
+    width: 880px;
 
     height: 28rem;
     overflow: scroll;
 }
 .table-body tr{
-    background-color: rgba(75, 75, 75, 0.222);
+    font-size: 14px;
+    background-color: rgba(110, 109, 109, 0.222);
 }
 .table-body tr:hover{
     background-color: rgba(165, 42, 42, 0.257);
+    color: blue;
 }
 .table-body .name{
     width: 349px;
@@ -51,7 +51,7 @@ width: 100px;
 
 }
 
-.table-body .department{
+.table-body .branch{
     width: 99.5px;
 
     display: flex;
@@ -64,7 +64,7 @@ width: 100px;
     justify-content: center;
     align-items: center;
 }
-.table-body .ID{
+.table-body .SID{
     width: 107px;
     display: flex;
     justify-content: center;
