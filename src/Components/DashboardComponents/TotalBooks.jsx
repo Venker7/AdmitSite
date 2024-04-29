@@ -10,15 +10,15 @@ export const TotalBooks = () => {
       const fetchData = async ()=>{
           setTimeout(async()=>{
             try{
-              const response = await axios.get("https://freetestapi.com/api/v1/books")
+              const response = await axios.get("https://library-mtu.vercel.app/api/book/get")
               console.log(response)
-              setTotalBooks(response.data)
+              setTotalBooks(response.data.book)
               setLoading(false)
           }
           catch(error){
               console.log(error)
           }
-          },2000)
+          },500)
       }
       fetchData();
     },[])

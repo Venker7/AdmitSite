@@ -52,7 +52,7 @@ export const SideNav = ({onLogOut}) => {
                      <div style={{ fontSize: '30px' }}> 
                 <FaBookBookmark />
              </div>
-             <p>IssuedBooks</p>
+             <p>IssuedForm</p>
              </NavLink>
             </div>
             <div id="nav">

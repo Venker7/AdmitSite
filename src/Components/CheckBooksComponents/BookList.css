@@ -2,7 +2,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);   
+    background-image: linear-gradient(to top, #ace0ee 0%, #dbeef9 100%);   
     display: grid;
     overflow: scroll;
     /* background-color: red; */
@@ -14,7 +14,7 @@
 }
 
 .bookcard{
-    height: 580px;
+    height: 600px;
     width: 230px;
     justify-self: center; /* Center horizontally */
     align-self: center;
@@ -38,7 +38,9 @@ border-radius: 7px;
 }
 
 .book-data{
-    height: 158px;
+    width: 250px;
+    transform: translateX(-10px);
+    height: 190px;
     background-color: rgba(255, 255, 255, 0.699);
     margin-top: 5px;
     border-radius: 7px;
@@ -51,12 +53,11 @@ border-radius: 7px;
 
 }
 
-.book-data:hover{
-    height: 160px ;
+/* .book-data:hover{
     width: 300px;
     transform: translateX(-35px);
 
-}
+} */
 #book-name{
     height: 20px;
     overflow: hidden;
@@ -70,10 +71,19 @@ border-radius: 7px;
     margin-top: 2px;
 
 }
-
+.book-data .data p{
+    color: blue;
+}
+.book-data .button{
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .book-data .button button{
     width: 100px;
-    height: 25px;
+    height: 30px;
     background-color: green;
     border-radius: 7px;
     border: none;
@@ -81,6 +91,9 @@ border-radius: 7px;
 .book-data .button button:hover{
    background-color: blue;
    cursor: pointer;
+}
+.editButton{
+ margin-top: 5px;
 }
 
 .edit{
