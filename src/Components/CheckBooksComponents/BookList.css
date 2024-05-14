@@ -23,7 +23,7 @@
 }
 
 .book-image{
-    height: 260px;
+    height: 280px;
     background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);     display: grid;
     border-radius: 7px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
@@ -31,16 +31,16 @@
 }
 
 .book-image img{
-    height: 260px;
+    height: 280px;
     width: 100%;
 margin-top: 0px;
 border-radius: 7px;
 }
 
 .book-data{
-    width: 250px;
-    transform: translateX(-10px);
-    height: 190px;
+    width: 260px;
+    transform: translateX(-15px);
+    height: 220px;
     background-color: rgba(255, 255, 255, 0.699);
     margin-top: 5px;
     border-radius: 7px;
@@ -59,20 +59,18 @@ border-radius: 7px;
 
 } */
 #book-name{
-    height: 20px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    margin-top: 7px;
+    margin-top: 10px;
 }
 .book-data .data{
     display: flex;
     margin-left: 10px;
-    margin-top: 2px;
+    margin-top: 5px;
 
 }
 .book-data .data p{
     color: blue;
+    font-size: 13px;
+    
 }
 .book-data .button{
     height: 60px;

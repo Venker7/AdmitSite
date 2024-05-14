@@ -88,7 +88,7 @@ export const BookList = ({ searchItem,selectItem }) => {
                 <div className="data" id="book-name">
                   Name:<p>{book.title}</p>
                 </div>
-                <div className="data">Author:<p>{book.author}  </p>  </div>
+                <div className="data" id="author">Author:<p>{book.author}  </p>  </div>
                 <div className="data">Branch:<p>{book.branch.name}</p></div>
                 <div className="data">Total Copies: <p>{book.copiesOwned}</p></div>
                 <div className="data">

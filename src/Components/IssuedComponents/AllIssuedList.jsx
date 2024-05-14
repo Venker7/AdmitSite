@@ -5,6 +5,7 @@ import axios from "axios";
 import { SkeletonIssue } from "./SkeletonIssue";
 
 export const AllIssuedList = ({searchitem}) => {
+  const {isRenew,setRenew}=useState(true);
   const [isLoading,setisLoading]=useState(true);
   const [books,setBooks]=useState([]);
   const [buttonText,setbuttonText]=useState([]);
@@ -26,7 +27,14 @@ export const AllIssuedList = ({searchitem}) => {
     }
     fetchData();
   },[]);
-  
+  const filter = books.filter((book)=>{
+    const searchvalue = String(searchitem).toLowerCase();
+    const IDmatch = String(book.id).toLowerCase().includes(searchvalue);
+    const Titlematch = book.title.toLowerCase().includes(searchvalue);
+    const Authormatch = book.author.toLowerCase().includes(searchvalue);
+    return IDmatch||Titlematch||Authormatch;
+
+  });
   const renderSkeletons = () => {
     const skeletons = [];
     for (let i = 0; i < 50; i++) {
@@ -41,7 +49,7 @@ export const AllIssuedList = ({searchitem}) => {
     setbuttonText(newButtonTexts)
   }
   return (
-    <div className="content">
+    
       <table className="table">
         <thead className="thead">
           <tr>
@@ -87,7 +95,7 @@ export const AllIssuedList = ({searchitem}) => {
         </thead>
         <tbody className="tbody">
           
-          {isLoading?(renderSkeletons()):(books.map((book,index) => (
+          {isLoading?(renderSkeletons()):(filter.map((book,index) => (
             <tr key={book.id} className="BooksRow">
               <td>
                 <div className="name">{book.title}</div>
@@ -113,13 +121,12 @@ export const AllIssuedList = ({searchitem}) => {
               <td>
                 <div className="remark">
                   <button className="accept" onClick={()=>handleButtontext(index)} style={{backgroundColor:buttonText[index]==='Submitted'?'green':'red'}} onMouseEnter={(e)=>{e.target.style.backgroundColor='blue'}} onMouseLeave={(e)=>{e.target.style.backgroundColor=buttonText[index]=='Submitted'?'green':'red'}}>{buttonText[index]}</button>
-                 
                 </div>
               </td>
             </tr>
           )))}
         </tbody>
       </table>
-    </div>
+    
   );
 };

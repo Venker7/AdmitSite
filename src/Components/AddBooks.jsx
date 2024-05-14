@@ -3,6 +3,7 @@ import "./AddBooks.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
+
 export const AddBooks = () => {
   const form = useForm();
   const { register, handleSubmit, formState } = form;
@@ -43,9 +44,9 @@ export const AddBooks = () => {
         timer: 3000,
       });
     }, 2000);
-    // setTimeout(() => {
-    //   // window.location.reload();
-    // }, 3000);
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
   };
 
   const addBookapi = async (formData) => {

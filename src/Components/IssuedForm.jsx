@@ -48,7 +48,8 @@ export const IssuedForm = () => {
         <label htmlFor="">Acc. No. :</label>
         <input type="text" className="input"/>
     </div> 
-    <button onClick={handleCancel1} className="cancel">Cancel</button><div>{isadding2===false?(<button onClick={handleAdding2} className="add-one">Add Books</button> ):""}</div></div>):<div><button onClick={handleAdding} className="add-more">Add Books</button></div>}
+    <button onClick={handleCancel1} className="cancel">Cancel</button><div>{isadding2===false?(<button onClick={handleAdding2} className="add-one">Add Books</button> ):""}</div></div>):
+    <div><button onClick={handleAdding} className="add-more">Add Books</button></div>}
     {
        isadding2 === true ?(<div>  
     <div className="bookname">

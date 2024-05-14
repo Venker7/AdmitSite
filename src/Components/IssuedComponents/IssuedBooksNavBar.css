@@ -91,3 +91,21 @@
     margin-left: 10px;
     font-size: 13px;
 }
+
+.issuedbar select{
+    font-size: 15px;
+    width: 170px;
+    height: 27px;
+    margin-left: 20px;
+    background-color: transparent;
+    color: black;
+}
+
+.issuedbar option{
+    font-size: 15px;
+    height: 30px;
+    color: blue;
+}
+
+
+

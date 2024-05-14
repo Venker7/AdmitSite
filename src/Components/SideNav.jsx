@@ -6,6 +6,7 @@ import { GiArchiveResearch } from "react-icons/gi";
 import { FaBookMedical } from "react-icons/fa6";
 import { FaBookBookmark } from "react-icons/fa6";
 import { RiLogoutCircleLine } from "react-icons/ri";
+import { SiReacthookform } from "react-icons/si";
 
 
 import "./SideNav.css"
@@ -50,7 +51,7 @@ export const SideNav = ({onLogOut}) => {
             <div id="nav">
                 <NavLink className="link" to='/issuedform'>
                      <div style={{ fontSize: '30px' }}> 
-                <FaBookBookmark />
+                     <SiReacthookform />
              </div>
              <p>IssuedForm</p>
              </NavLink>
