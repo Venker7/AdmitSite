@@ -30,7 +30,7 @@ outline: 2px solid white;
     width: 400px;
 }
 .table .thead .author{
-    width: 290px;
+    width: 260px;
 }.table .thead .id{
     width: 90px;
 }.table .thead .Sid{
@@ -42,7 +42,7 @@ outline: 2px solid white;
 }.table .thead .drnew{
     width: 100px;
 }.table .thead .remark{
-    width: 182px;
+    width: 210px;
 }
 
 .tbody{
@@ -83,7 +83,7 @@ outline: 2px solid white;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 290px;
+    width: 260px;
 }
 
 .tbody .sid{
@@ -121,7 +121,7 @@ outline: 2px solid white;
 }
 
 .tbody .accept{
-    width: 80px;
+    width: 100px;
     border: none;
     background-color: red;
     

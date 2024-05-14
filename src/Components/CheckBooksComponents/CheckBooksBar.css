@@ -19,6 +19,7 @@
     height: 25px;
     width: 220px;
     font-size: 14px;
+    outline: black;
 }
 
 .checkbookbar option {

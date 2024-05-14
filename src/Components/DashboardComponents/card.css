@@ -1,13 +1,13 @@
 .card {
-    height: 100px;
-    width: 200px;
+    height: 120px;
+    width: 240px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     cursor: pointer;
     font-size: 20px;
-    margin-left: 150px;
+    margin-left: 100px;
     margin-top: 40px;
     border-radius: 10px;
     background-image: linear-gradient(45deg, #e3eeff 0%, #f3f7c9 99%, #e3eeff 100%); 

@@ -29,9 +29,8 @@ export const EditForm = ({book,onUpdate}) => {
     title: initialTitle,
     author: initialAuthor,
     id:initialID,
-    department: "",
-    totalCopies: "",
-    available: "",
+    TotalCopies:"",
+    CopiesAvailable:""
   });
 
   // Handle form submission
@@ -115,8 +114,8 @@ export const EditForm = ({book,onUpdate}) => {
           <label htmlFor="name">Total:</label>
           <input
             type="number"
-            name="total no. of books"
-            value={formData.total}
+            name="TotalCopies"
+            value={formData.totalCopies}
             onChange={handleChange}
           />
         </div>
@@ -124,7 +123,7 @@ export const EditForm = ({book,onUpdate}) => {
           <label htmlFor="name">No.of available:</label>
           <input
             type="number"
-            name="no. of copies available"
+            name="CopiesAvailable"
             value={formData.available}
             onChange={handleChange}
           />

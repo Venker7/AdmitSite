@@ -1,8 +1,10 @@
 .skeleton-bookcard{
-    height: 380px;
-    width: 230px;
-    margin-top: 50px;
-    margin-left: 100px;
+  height: 580px;
+  width: 230px;
+  justify-self: center; /* Center horizontally */
+  align-self: center;
+  margin-top: 40px;
+  margin-bottom: -100px;
 }
 
 .skeleton-bookimage{
@@ -14,7 +16,9 @@
 }
 
 .skeleton-bookdata{
-    height: 158px;
+  width: 250px;
+  transform: translateX(-10px);
+    height: 190px;
     background-color: rgba(156, 168, 173, 0.841);
     margin-top: 5px;
     font-size: 12px;
