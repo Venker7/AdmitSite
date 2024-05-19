@@ -12,6 +12,7 @@ import { OverdueBooks } from "./IssuedComponents/OverdueBooks";
 import { ReturnedBooks } from "./IssuedComponents/ReturnedBooks";
 import { PreBooked } from "./IssuedComponents/PreBooked";
 import { IssuedForm } from "./IssuedForm";
+import Librarian from "./Librarian";
 export const Contain = ({ isOpen, setisOpen }) => {
   const [searchitem, setsearchitem] = useState("");
   const [title, setTitle] = useState("");
@@ -35,6 +36,10 @@ export const Contain = ({ isOpen, setisOpen }) => {
           }
         />
         <Route path="/issuedform" element={<IssuedForm />} />
+        <Route
+          path="/librarian"
+          element={<Librarian isOpen={isOpen} setisOpen={setisOpen} />}
+        />
         <Route
           path="/issuedbooks"
           element={

@@ -7,6 +7,7 @@ import { FaBookMedical } from "react-icons/fa6";
 import { FaBookBookmark } from "react-icons/fa6";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { SiReacthookform } from "react-icons/si";
+import { ImBooks } from "react-icons/im";
 
 import "./SideNav.css";
 export const SideNav = ({ onLogOut, isOpen, setisOpen }) => {
@@ -63,6 +64,14 @@ export const SideNav = ({ onLogOut, isOpen, setisOpen }) => {
               <FaBookBookmark />
             </div>
             <p>IssuedBooks</p>
+          </NavLink>
+        </div>
+        <div id="nav">
+          <NavLink className="link" to="/librarian">
+            <div style={{ fontSize: "30px" }}>
+              <ImBooks />
+            </div>
+            <p>Librarian</p>
           </NavLink>
         </div>
       </nav>

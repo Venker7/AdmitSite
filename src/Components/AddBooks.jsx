@@ -3,6 +3,7 @@ import "./AddBooks.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { BASE_URL } from "../Components/constant";
 export const AddBooks = ({ title, author, setTitle, setAuthor }) => {
   const form = useForm();
   const { register, handleSubmit, formState } = form;
@@ -15,9 +16,7 @@ export const AddBooks = ({ title, author, setTitle, setAuthor }) => {
 
   const fetchbranches = async () => {
     try {
-      const response = await axios.get(
-        "https://library-mtu.vercel.app/api/branch"
-      );
+      const response = await axios.get(`${BASE_URL}/api/branch`);
       setBranchIds(response.data.data);
     } catch (error) {
       console.log(error);

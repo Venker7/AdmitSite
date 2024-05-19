@@ -179,6 +179,14 @@ export const IssuedForm = () => {
         setBookName3("");
         setAuthor3("");
         setBookId3("");
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: data.message,
+          showConfirmButton: false,
+          iconColor: "red",
+          timer: 3000,
+        });
       }
     } catch (error) {
       Swal.fire({

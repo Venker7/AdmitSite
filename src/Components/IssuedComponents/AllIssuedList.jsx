@@ -53,6 +53,19 @@ export const AllIssuedList = ({
   const [buttonText, setbuttonText] = useState([]);
   const [filter, setFilter] = useState([]);
   const [isAccepted, setAccept] = useState(false);
+
+  const renewHandler = async (id) => {
+    try {
+      const res = await axios.put(`${BASE_URL}/api/loan/renew/${id}`);
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+      });
+    }
+  };
+
   const confirmation = (id, fine) => {
     if (fine) {
       Swal.fire({
@@ -60,30 +73,32 @@ export const AllIssuedList = ({
         showDenyButton: true,
         showCancelButton: true,
         confirmButtonText: "Submit",
-        denyButtonText: "No",
+        denyButtonText: "Renew",
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           submitLoan(id);
           Swal.fire("Saved!", "", "success");
         } else if (result.isDenied) {
+          renewHandler(id);
           Swal.fire("Changes are not saved", "", "info");
         }
       });
     } else {
       Swal.fire({
-        title: "Are you sure?",
+        title: "Submit or Renew",
         showDenyButton: true,
         showCancelButton: true,
         confirmButtonText: "Submit",
-        denyButtonText: "No",
+        denyButtonText: "Renew",
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           submitLoan(id);
           Swal.fire("Saved!", "", "success");
         } else if (result.isDenied) {
-          Swal.fire("Changes are not saved", "", "info");
+          renewHandler(id);
+          Swal.fire("Saved!", "", "success");
         }
       });
     }
@@ -142,7 +157,7 @@ export const AllIssuedList = ({
       width: "160px",
     },
     {
-      name: "Student Id",
+      name: "User Id",
       selector: (row) => row.student_id?.registrationNo,
       sortable: true,
       wrap: true,
