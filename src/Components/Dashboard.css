@@ -1,16 +1,16 @@
-.dashboard{
+.dashboard {
     position: absolute;
     width: 100%;
     height: 100%;
     /* background-image: linear-gradient(to top, #9fbde0 0%, #d7e7ff 100%);  */
     background-color: rgb(196, 209, 233);
-display: flex;
-flex-direction: column;
+    display: flex;
+    flex-direction: column;
     overflow: scroll;
     margin-bottom: -40px;
 }
 
-.modal{
+.modal {
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.398);
@@ -24,7 +24,7 @@ flex-direction: column;
     transition: pop-up 5s ease-out;
 }
 
-.back-pop{
+.back-pop {
     height: 30px;
     width: 30px;
     float: right;
@@ -34,53 +34,54 @@ flex-direction: column;
     font-size: 20px;
 }
 
-.back-pop:hover{
+.back-pop:hover {
     background-color: rgba(0, 0, 0, 0.166);
     outline: 1px solid rgba(0, 0, 0, 0.627)
 }
 
-.card-div{
+.card-div {
     display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-
-
-
-
-.pop{
+.pop {
     height: 100px;
     width: 400px;
     background-color: aliceblue;
 }
 
-.pop-up{
+.pop-up {
     background-color: white;
     height: 600px;
     width: 750px;
     transition: 5s ease-out;
 }
-.attendance-div{
+
+.attendance-div {
     width: 100%;
-   margin-top: 40px;
+    margin-top: 20px;
     height: 100%;
     position: relative;
     display: flex;
-   
+
 
 }
-.attendance{
-    margin-left:95px;
+
+.attendance {
+    margin-left: 95px;
     background-color: azure;
     height: 30rem;
     width: 880px;
     border-radius: 7px 7px 0px 0px;
-    background-image: linear-gradient(45deg, #e3eeff 0%, #f3f7c9 99%, #e3eeff 100%); 
-     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1); 
-     overflow: scroll;
-     table-layout: auto;
+    background-image: linear-gradient(45deg, #e3eeff 0%, #f3f7c9 99%, #e3eeff 100%);
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+    overflow: scroll;
+    table-layout: auto;
 }
 
-.chart{
+.chart {
     margin-left: 40px;
     background-color: aliceblue;
     border-radius: 10px;

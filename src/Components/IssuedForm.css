@@ -1,30 +1,37 @@
-.form-container{
+.form-container {
 
     width: 100%;
     height: 100%;
     background-color: rgb(207, 225, 232);
     overflow: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 2rem;
+    padding: 1rem;
 }
 
-.issuedForm{
+.issuedForm {
     height: 550px;
     width: 500px;
+    /* margin-top: 2rem; */
     background-color: white;
-    margin-left: 32rem;
-    margin-top: 50px;
-    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.issuedForm h2{
+.issuedForm h2 {
     margin-top: 20px;
 }
-.bookname,.book-author,.ID{
-margin-top: 10px;
+
+.bookname,
+.book-author,
+.ID {
+    margin-top: 10px;
 }
-.issuedForm .input{
+
+.issuedForm .input {
     width: 350px;
     height: 30px;
     background-color: transparent;
@@ -35,25 +42,27 @@ margin-top: 10px;
     font-size: 14px;
 }
 
-.upload{
+.upload {
     margin-top: 20px;
     border: none;
     height: 30px;
     width: 200px;
     background-color: blue;
     cursor: pointer;
+    color: white;
 }
 
-.add-more{
+.add-more {
     margin-top: 30px;
     border: none;
     height: 30px;
     width: 200px;
     background-color: green;
     cursor: pointer;
+    color: white;
 }
 
-.add-one{
+.add-one {
     margin-top: 30px;
     border: none;
     height: 30px;
@@ -63,21 +72,25 @@ margin-top: 10px;
     cursor: pointer;
 }
 
-.add-one:hover,.add-more:hover{
-    background-color:brown;
+.add-one:hover,
+.add-more:hover {
+    background-color: brown;
 }
 
-.adding1{
-    height: 800px; 
-}
-.adding2{
-    height: 1000px;
-}
-.adding3{
+.adding1 {
     height: 800px;
 }
-.cancel{
-    width:70px;
+
+.adding2 {
+    height: 1000px;
+}
+
+.adding3 {
+    height: 800px;
+}
+
+.cancel {
+    width: 70px;
     height: 25px;
     background-color: rgb(0, 255, 38);
     border: none;
@@ -85,16 +98,55 @@ margin-top: 10px;
     margin-top: 20px;
     cursor: pointer;
 }
-.cancel:hover{
+
+.cancel:hover {
     background-color: red;
 }
-.registration-number{
+
+.registration-number {
     margin-top: 20px;
 }
-.department{
+
+.regist {
+    display: flex;
+}
+
+.department {
     margin-top: 10px;
 }
 
-#book2{
+#book2 {
     margin-top: 30px;
+}
+
+.select {
+    width: 350px;
+    border: 1px solid blue;
+    border-radius: 0.3rem
+}
+
+.profile_card {
+    /* border bg-white flex justify-around items-center border-black p-4 bg-blue-200 w-3/4 rounded-md */
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    background-color: white;
+    width: 25%;
+    border-radius: 20px;
+    margin-top: -6rem;
+    align-self: center;
+
+    .heading {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: black;
+        margin-bottom: 1rem;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
 }

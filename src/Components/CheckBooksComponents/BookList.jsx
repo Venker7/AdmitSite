@@ -5,6 +5,7 @@ import axios from "axios";
 import { RxCross1 } from "react-icons/rx";
 import { SkeletonBooklist } from "./SkeletonBooklist";
 import { EditForm } from "./EditForm";
+import { BASE_URL } from "../../Components/constant.js";
 // import { BASE_URL } from "../../constants";
 export const BookList = ({ searchItem, selectItem }) => {
   const [books, setBooks] = useState([]);
@@ -31,16 +32,12 @@ export const BookList = ({ searchItem, selectItem }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://library-mtu.vercel.app/api/book/get"
-        );
+        const response = await axios.get(`${BASE_URL}/api/book/get`);
         console.log(response);
         const length = response.data.book.length;
         console.log(length);
         setBooks(response.data.book);
-        setTimeout(() => {
-          setisLoading(false);
-        }, 1000);
+        setisLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -57,14 +54,13 @@ export const BookList = ({ searchItem, selectItem }) => {
       const titleMatch = book.title.toLowerCase().includes(searchValue); // Check if title matches
       const authorMatch = book.author.toLowerCase().includes(searchValue);
       return titleMatch || authorMatch || idMatch;
-    } else {
-      const searchValue = String(searchItem).toLowerCase();
-      const idMatch = String(book.id).toLowerCase().includes(searchValue); // Check if id matches
-      const titleMatch = book.title.toLowerCase().includes(searchValue); // Check if title matches
-      const authorMatch = book.author.toLowerCase().includes(searchValue);
-      const branchMatch = book.branch._id.includes(selectDepartment);
-      return branchMatch && (titleMatch || authorMatch || idMatch);
     }
+    const searchValue = String(searchItem).toLowerCase();
+    const idMatch = String(book.id).toLowerCase().includes(searchValue); // Check if id matches
+    const titleMatch = book.title.toLowerCase().includes(searchValue); // Check if title matches
+    const authorMatch = book.author.toLowerCase().includes(searchValue);
+    const branchMatch = book.branch._id.includes(selectDepartment);
+    return branchMatch && (titleMatch || authorMatch || idMatch);
   });
 
   return (

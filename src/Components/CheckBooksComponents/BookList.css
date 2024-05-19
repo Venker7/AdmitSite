@@ -3,21 +3,24 @@
     width: 100%;
     background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
     display: grid;
+    place-items: center;
     overflow: scroll;
-    display: grid;
-    grid-template-columns: 350px 350px 350px 300px;
-    grid-row-gap: 100px;
-    gap: 60px 0px;
+    /* display: grid; */
+    /* grid-template-columns: 350px 350px 350px 300px; */
+    grid-template-columns: repeat(4, 300px);
+    grid-template-rows: repeat(5, 500px);
+    /* grid-row-gap: 100px; */
+    /* gap: 60px 0px; */
 }
 
 .bookcard {
-    height: 380px;
+    height: max-content;
     width: 230px;
     justify-self: center;
     /* Center horizontally */
     align-self: center;
-    margin-top: 40px;
-    margin-bottom: -100px;
+    /* margin-top: 40px; */
+    /* margin-bottom: -100px;s */
 }
 
 .book-image {
@@ -32,12 +35,15 @@
 .book-image img {
     height: 260px;
     width: 100%;
+    /* aspect-ratio: 9/16; */
     margin-top: 0px;
+
+    object-fit: fill;
     border-radius: 7px;
 }
 
 .book-data {
-    height: 158px;
+    height: fit-content;
     background-color: rgba(255, 255, 255, 0.699);
     margin-top: 5px;
     border-radius: 7px;
@@ -50,12 +56,12 @@
 
 }
 
-.book-data:hover {
+/* .book-data:hover {
     height: 160px;
     width: 300px;
     transform: translateX(-35px);
 
-}
+} */
 
 #book-name {
     height: 20px;
@@ -78,6 +84,7 @@
     background-color: green;
     border-radius: 7px;
     border: none;
+    color: white;
 }
 
 .book-data .button button:hover {

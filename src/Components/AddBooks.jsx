@@ -3,7 +3,7 @@ import "./AddBooks.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
-export const AddBooks = () => {
+export const AddBooks = ({ title, author, setTitle, setAuthor }) => {
   const form = useForm();
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
@@ -15,7 +15,9 @@ export const AddBooks = () => {
 
   const fetchbranches = async () => {
     try {
-      const response = await axios.get("https://library-mtu.vercel.app/api/branch");
+      const response = await axios.get(
+        "https://library-mtu.vercel.app/api/branch"
+      );
       setBranchIds(response.data.data);
     } catch (error) {
       console.log(error);
@@ -58,9 +60,12 @@ export const AddBooks = () => {
 
       // Log the data appended to formData
       for (const [key, value] of formData.entries()) {
-        console.log(key,value);
+        console.log(key, value);
       }
-      const response = await axios.post("https://library-mtu.vercel.app/api/book/add", formData);
+      const response = await axios.post(
+        "https://library-mtu.vercel.app/api/book/add",
+        formData
+      );
       console.log(response);
       // return response;
       setTimeout(() => {
@@ -79,6 +84,7 @@ export const AddBooks = () => {
             <label htmlFor="book_name">BookName:</label>
             <input
               type="text"
+              // onChange={(e) => setTitle(e.target.value)}
               {...register("bookname", { required: "Bookname is required" })}
             />
           </div>
@@ -88,6 +94,8 @@ export const AddBooks = () => {
             <label htmlFor="author">Author:</label>
             <input
               type="text"
+              // value={author}
+              // onChange={(e) => setAuthor(e.target.value)}
               {...register("author", {
                 required: "Author of the book is required",
               })}
