@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import "./IssuedForm.css";
 import { useDebouncedValue } from "@mantine/hooks";
 import { TiTick } from "react-icons/ti";
+import LoadingBar from 'react-top-loading-bar'
+import { instance } from "../../api";
 
 import Swal from "sweetalert2";
-import { BASE_URL } from "./constant";
-import { Select } from "@mantine/core";
 
 export const IssuedForm = () => {
   const [isadding1, setAdding] = useState(false);
@@ -31,41 +31,40 @@ export const IssuedForm = () => {
   const [debounced] = useDebouncedValue(registration1, 2000);
   const [loading, setLoading] = useState(true);
   const [unsubmitted, setUnsubmitted] = useState();
+  const [progress, setProgress] = useState(0);
+
+  const ref=useRef(null)
 
   const handleAdding = () => {
     setAdding(true);
   };
 
   useEffect(() => {
-    fetch(`${BASE_URL}/api/branch`)
-      .then((res) => res.json())
-      .then((data) => setBranch(data.data));
+    const fetchBranch=async()=>{
+      const response = await instance.get('api/branch')
+      setBranch(response.data.data)
+
+    }
+    fetchBranch()
   }, []);
 
   useEffect(() => {
-    const fetchStudentId = (id) => {
-      fetch(`${BASE_URL}/api/student/search?registrationNo=${id}`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.success) {
-            console.log(data);
+    const fetchStudentId = async(id) => {
+      const response = await instance.get(`api/student/search?registrationNo=${id}`)
+      if (response.data.success) {
             setVerified(true);
-            setStudent(data.student);
-            setStudentId(data.student._id);
+            setStudent(response.data.student);
+            setStudentId(response.data.student._id);
             setLoading(false);
-            setUnsubmitted(data.unsubmitted.length);
+            setUnsubmitted(response.data.unsubmitted.length);
           }
-        });
-    };
-
+        }
     if (debounced) {
       fetchStudentId(debounced);
     }
   }, [debounced]);
 
   const handleAdding2 = () => {
-    // e.preventDefault();
-    console.log("book2 added");
     setAdding(true);
     setAdding(true);
     setAdding2(true);
@@ -145,22 +144,20 @@ export const IssuedForm = () => {
       student_id: studentId,
       branch_id: branchId,
     };
-    console.log(uploadData);
     issuebookHandler(uploadData);
   };
 
   const issuebookHandler = async (uploadData) => {
+    console.log(uploadData);
+    ref.current.continuousStart()
     try {
-      const res = await fetch(`${BASE_URL}/api/loan/add`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(uploadData),
-      });
-      const data = await res.json();
-      console.log(data);
-      if (data.success) {
+      const res= await instance.post('api/loan/add',{
+        loans:uploadData.loans,
+        student_id:uploadData.student_id,
+        branch_id:uploadData.branch_id
+      },{headers: {'Content-Type': 'application/json'}});
+      console.log(res);
+      if (res.data.success) {
         Swal.fire({
           icon: "success",
           title: "Added Successfully",
@@ -168,6 +165,7 @@ export const IssuedForm = () => {
           iconColor: "green",
           timer: 3000,
         });
+        ref.current.complete()
         setBookName1("");
         setAuthor1("");
         setBookId1("");
@@ -201,6 +199,7 @@ export const IssuedForm = () => {
 
   return (
     <div className="form-container">
+      <LoadingBar color='#f11946' ref={ref} />
       <form
         action=""
         className={`issuedForm ${

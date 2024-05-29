@@ -1,65 +1,76 @@
 import React, { useEffect, useState } from "react";
-import "./AttendanceTable.css"
-import axios from "axios";
+import "./AttendanceTable.css";
+import { format } from "date-fns";
+import {attendance} from "../../../api.js";
 export const Attendance = () => {
-  const [studentAttendances,setstudentAttendance]=useState([]);
-useEffect(()=>{
-  const fetchData=async()=>{
-    try{
-      const response = await axios.get("https://freetestapi.com/api/v1/students");
-      console.log(response)
-      setstudentAttendance(response.data)
-    } catch(error){
-      console.log(error)
-    }
-  }
-  fetchData();
-},[])
-  return <table className="attendance">
-  <thead className="table-header">
-    <tr>
-      <th  className="student-name">
-        <div>Name</div>
-      </th>
-      <th className="student-department">
-        <div >Department</div>
-      </th>
-      <th className="student-reg.no">
-        <div >Reg. No.</div>
-      </th>
-      <th className="date">
-        <div>Date</div>
-      </th>
-      <th className="entry">
-        <div >Entry</div>
-      </th>
-      <th className="exit">
-        <div >Exit</div>
-      </th>
-    </tr>
-  </thead>
-  <tbody className="table-body">
-    {(studentAttendances.map((attendance)=>( <tr key={attendance.id}>
-      <td>
-        <div className="name">{attendance.name}</div>
-      </td>
-      <td>
-        <div className="branch">CSE</div>
-      </td>
-      <td>
-        <div className="SID">2001CS0202</div>
-      </td>
-      <td>
-        <div className="date">24/4/2024</div>
-      </td>
-      <td>
-        <div className="entry-time">1:24 pm</div>
-      </td>
-      <td>
-        <div className="exit-time">3:00 pm</div>
-      </td>
-    </tr>)))}
-   
-  </tbody>
-  </table>;
+  const [studentAttendances, setstudentAttendance] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await attendance.get('register/all')
+        setstudentAttendance(response.data.message);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+  return (
+    <table className="w-[80vw] rounded-lg ">
+      <thead className="table-header">
+        <tr>
+          <th className="">
+            <div>Name</div>
+          </th>
+          <th className="">
+            <div>Department</div>
+          </th>
+          <th className="">
+            <div>Reg. No.</div>
+          </th>
+          <th className="">
+            <div>Date</div>
+          </th>
+          <th className="">
+            <div>Entry</div>
+          </th>
+          <th className="">
+            <div>Exit</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody className="bg-white">
+        {studentAttendances.map((attendance) => (
+          <tr className="border border-b-black" key={attendance._id}>
+            <td>
+              <div className="">{attendance.name}</div>
+            </td>
+            <td>
+              <div className="">{attendance.department}</div>
+            </td>
+            <td>
+              <div className="">{attendance.registration_no}</div>
+            </td>
+            <td>
+              <div className="">
+                {format(new Date(attendance.date), "MM/dd/yyyy")}
+              </div>
+            </td>
+            <td>
+              <div className="">
+                {format(new Date(attendance.in), "h:mm a")}
+              </div>
+            </td>
+            <td>
+              <div className="">
+                {attendance.out
+                  ? format(new Date(attendance.out), "h:mm a")
+                  : "---"}
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
 };

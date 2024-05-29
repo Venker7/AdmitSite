@@ -4,8 +4,7 @@ import "./BookTable.css";
 import { format } from "date-fns";
 import DataTable, { createTheme } from "react-data-table-component";
 import styled, { keyframes } from "styled-components";
-import axios from "axios";
-import { BASE_URL } from "../constant";
+import { instance } from "../../../api";
 const rotate360 = keyframes`
 from {
   transform: rotate(0deg);
@@ -45,7 +44,6 @@ export const OverdueBooks = ({ isOpen, searchitem, date, setDate }) => {
   const [filter, setFilter] = useState([]);
 
   useEffect(() => {
-    console.log(searchitem);
     if (searchitem === 0) {
       setFilter(books);
     } else {
@@ -60,20 +58,15 @@ export const OverdueBooks = ({ isOpen, searchitem, date, setDate }) => {
   }, [searchitem]);
 
   useEffect(() => {
-    console.log(date);
     const searchDate = new Date(date);
-    console.log(books);
     const newData = books.filter((row) => {
       const takenDate = new Date(row?.loanDate);
-      console.log(`${takenDate.getDate()}--taken date`);
-      console.log(`${searchDate.getDate()}--search date`);
       return (
         takenDate.getDate() === searchDate.getDate() &&
         takenDate.getMonth() === searchDate.getMonth() &&
         takenDate.getFullYear() === searchDate.getFullYear()
       );
     });
-    console.log(newData);
     setFilter(newData);
   }, [date]);
   const columns = [
@@ -251,8 +244,7 @@ export const OverdueBooks = ({ isOpen, searchitem, date, setDate }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/loan`);
-        console.log(response);
+        const response = await instance.get("api/loan");
         const dueFineData = response.data.loans.filter(
           (book) => book.remark === "Due Fine"
         );
@@ -287,39 +279,6 @@ export const OverdueBooks = ({ isOpen, searchitem, date, setDate }) => {
           pagination
         />
       </div>
-      {/* <table className="table">
-        <thead className="thead">
-          <tr>
-              <th>
-                <div className="">Name of Books</div>
-              </th>
-              <th>
-                <div className="">Authors</div>
-              </th>
-              <th>
-                <div className="">BookID</div>
-              </th>
-              <th>
-                <div className="">StudentID</div>
-              </th>
-              <th>
-                <div className="">Return Date</div>
-              </th>
-              <th>
-                <div></div>
-              </th>
-              <th>
-                <div></div>
-              </th>
-              <th>
-                <div></div>
-              </th>
-          </tr>
-        </thead>
-        <tbody>
-  
-        </tbody>
-      </table> */}
     </div>
   );
 };

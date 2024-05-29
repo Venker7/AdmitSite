@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { BASE_URL } from "../../constants.js";
+import { instance } from "../../../api.js";
 export const Returned = ({ openmodal }) => {
   const [Return, setReturn] = useState(0);
   const returnpop = () => {
@@ -9,13 +8,10 @@ export const Returned = ({ openmodal }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/loan`);
-        console.log(response);
+        const response = await instance.get(`api/loan`);
         const data = response.data.loans.filter(
           (book) => book.remark === "Submitted"
         );
-        // setBooks(response.data.loans);
-        console.log(data);
         setReturn(data.length);
       } catch (error) {
         console.log(error);

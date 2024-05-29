@@ -17,7 +17,6 @@ export const SideNav = ({ onLogOut, isOpen, setisOpen }) => {
   // };
   const handlelogout = () => {
     onLogOut();
-    console.log("logout");
   };
 
   return (

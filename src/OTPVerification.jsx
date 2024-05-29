@@ -30,7 +30,6 @@ export const OTPVerification = ({ onVerify }) => {
 
   const handleResend = () => {
     setIsResending(true);
-    console.log("Resending OTP...");
     toast('OTP has been resent to your MTU email', { autoClose: 10000, position: "top-left" });
   };
 

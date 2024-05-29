@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./BookList.css";
-import image from "./Algorithm.jpg";
-import axios from "axios";
 import { RxCross1 } from "react-icons/rx";
 import { SkeletonBooklist } from "./SkeletonBooklist";
 import { EditForm } from "./EditForm";
-import { BASE_URL } from "../../Components/constant.js";
-// import { BASE_URL } from "../../constants";
+import { instance } from "../../../api.js";
+import LoadingBar from "react-top-loading-bar";
 export const BookList = ({ searchItem, selectItem }) => {
+  const ref=useRef(null)
   const [books, setBooks] = useState([]);
   const [editbooks, setEditBooks] = useState({});
   const [EditPop, setEditPop] = useState(false);
   const [isLoading, setisLoading] = useState(true);
   const editbookdata = (books) => {
-    console.log(books);
     setEditBooks(books);
     setEditPop(true);
   };
@@ -32,10 +30,10 @@ export const BookList = ({ searchItem, selectItem }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/book/get`);
-        console.log(response);
-        const length = response.data.book.length;
-        console.log(length);
+        const response= await instance({
+          url:'/api/book/get',
+          method:'GET'
+        })
         setBooks(response.data.book);
         setisLoading(false);
       } catch (error) {
@@ -63,8 +61,23 @@ export const BookList = ({ searchItem, selectItem }) => {
     return branchMatch && (titleMatch || authorMatch || idMatch);
   });
 
+  const deleteBookdata= async (id)=>{
+    try {
+      ref.current.continuousStart()
+      await instance({
+        url:`/api/book/delete/${id}`,
+        method:'DELETE'
+      })
+      ref.current.complete()
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="booklist">
+      <LoadingBar color="#0088ff" ref={ref}/>
       {isLoading
         ? renderSkeletons()
         : filteredBooks.map((book) => (
@@ -94,6 +107,9 @@ export const BookList = ({ searchItem, selectItem }) => {
                 <div className="button">
                   <button type="button" onClick={() => editbookdata(book)}>
                     Edit
+                  </button>
+                  <button type="button" className="delete" onClick={() => deleteBookdata(book._id)}>
+                    delete
                   </button>
                 </div>
               </div>

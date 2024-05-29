@@ -7,7 +7,6 @@ export const CheckBooks = () => {
   const [selectItem, setSelectItem] = useState("");
   const handlesearch = (searchValue) => {
     setsearchItem(searchValue);
-    console.log(searchItem);
   };
   const handleselect = (selectvalue) => {
     setSelectItem(selectvalue);

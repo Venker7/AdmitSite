@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./AddBooks.css";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import Swal from "sweetalert2";
-import { BASE_URL } from "../Components/constant";
-export const AddBooks = ({ title, author, setTitle, setAuthor }) => {
+import { instance } from "../../api";
+import LoadingBar from "react-top-loading-bar";
+export const AddBooks = () => {
+  const ref= useRef(null)
   const form = useForm();
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
@@ -16,7 +17,7 @@ export const AddBooks = ({ title, author, setTitle, setAuthor }) => {
 
   const fetchbranches = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/branch`);
+      const response = await instance.get("api/branch");
       setBranchIds(response.data.data);
     } catch (error) {
       console.log(error);
@@ -24,7 +25,6 @@ export const AddBooks = ({ title, author, setTitle, setAuthor }) => {
   };
 
   const onAdd = (data) => {
-    console.log(data.bookname);
     const formData = new FormData();
     formData.append("title", data.bookname);
     formData.append("author", data.author);
@@ -34,48 +34,54 @@ export const AddBooks = ({ title, author, setTitle, setAuthor }) => {
     formData.append("file", data.image[0]);
 
     addBookapi(formData);
-
-    setTimeout(() => {
-      Swal.fire({
-        icon: "success",
-        title: "Added Successfully",
-        showConfirmButton: false,
-        iconColor: "green",
-        timer: 3000,
-      });
-    }, 2000);
-    // setTimeout(() => {
-    //   // window.location.reload();
-    // }, 3000);
-  };
+    }
 
   const addBookapi = async (formData) => {
     try {
-      console.log(formData);
+      ref.current.continuousStart()
       if (!formData || !formData.has) {
         console.log("formData is empty");
         return; // Exit the function early if formData is empty
       }
 
-      // Log the data appended to formData
-      for (const [key, value] of formData.entries()) {
-        console.log(key, value);
-      }
-      const response = await axios.post(
-        "https://library-mtu.vercel.app/api/book/add",
+      const response = await instance.post(
+      "api/book/add",
         formData
-      );
-      console.log(response);
-      // return response;
-      setTimeout(() => {
-        window.location.reload();
-      }, 3000);
-    } catch (error) {
-      console.log(error);
+      )
+      ref.current.complete()
+      if (response.data.success) 
+        {
+          await Swal.fire({
+            icon: "success",
+            title: "Added Successfully",
+            showConfirmButton: false,
+            iconColor: "green",
+            timer: 3000,
+          });
+          window.location.reload()
+        }
+        else{
+          Swal.fire({
+            icon: "error",
+            title: response.data.message,
+            showConfirmButton: false,
+            iconColor: "red",
+            timer: 3000,
+          });
+        }
+  } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: error.message,
+        showConfirmButton: false,
+        iconColor: "red",
+        timer: 2000,
+      });
     }
   };
   return (
     <div className="addbooks">
+      <LoadingBar color='#0088ff' ref={ref} />
       <form className="addbooks-form" onSubmit={handleSubmit(onAdd)}>
         <h3>Add Books</h3>
         <div className="field">
@@ -83,7 +89,6 @@ export const AddBooks = ({ title, author, setTitle, setAuthor }) => {
             <label htmlFor="book_name">BookName:</label>
             <input
               type="text"
-              // onChange={(e) => setTitle(e.target.value)}
               {...register("bookname", { required: "Bookname is required" })}
             />
           </div>
@@ -93,8 +98,6 @@ export const AddBooks = ({ title, author, setTitle, setAuthor }) => {
             <label htmlFor="author">Author:</label>
             <input
               type="text"
-              // value={author}
-              // onChange={(e) => setAuthor(e.target.value)}
               {...register("author", {
                 required: "Author of the book is required",
               })}

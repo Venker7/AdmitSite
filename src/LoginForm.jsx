@@ -8,7 +8,6 @@ export const LoginForm = ({ setRegister,onlogin }) => {
   const {register,handleSubmit,formState}=form;
   const {errors}=formState;
   const onLogin = (data) => {
-    console.log('form has submit',data);
     onlogin()
   };
 

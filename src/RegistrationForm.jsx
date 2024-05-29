@@ -10,7 +10,6 @@ export const RegistrationForm = ({ onRegister }) => {
   const { errors } = formState;
 
   const onSubmit = (data) => {
-    console.log('Form Data', data);
     setTimeout(() => {
       onRegister();
     }, 3000);

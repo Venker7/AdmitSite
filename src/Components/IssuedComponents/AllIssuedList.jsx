@@ -5,9 +5,8 @@ import { format } from "date-fns";
 import DataTable, { createTheme } from "react-data-table-component";
 import styled, { keyframes } from "styled-components";
 import Swal from "sweetalert2";
-import axios from "axios";
+import { instance } from "../../../api";
 
-import { BASE_URL } from "../constant";
 
 const rotate360 = keyframes`
   from {
@@ -44,19 +43,16 @@ const CustomLoader = () => (
 export const AllIssuedList = ({
   searchitem,
   isOpen,
-  setisOpen,
   date,
-  setDate,
 }) => {
   const [pending, setPending] = useState(true);
   const [books, setBooks] = useState([]);
-  const [buttonText, setbuttonText] = useState([]);
   const [filter, setFilter] = useState([]);
-  const [isAccepted, setAccept] = useState(false);
 
   const renewHandler = async (id) => {
     try {
-      const res = await axios.put(`${BASE_URL}/api/loan/renew/${id}`);
+      await instance.put(`api/loan/renew/${id}`);
+      window.location.reload();
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -105,7 +101,6 @@ export const AllIssuedList = ({
   };
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    console.log(searchitem);
     if (searchitem === 0) {
       setFilter(books);
     } else {
@@ -120,20 +115,15 @@ export const AllIssuedList = ({
   }, [searchitem]);
 
   useEffect(() => {
-    console.log(date);
     const searchDate = new Date(date);
-    console.log(books);
     const newData = books.filter((row) => {
       const takenDate = new Date(row?.loanDate);
-      console.log(`${takenDate.getDate()}--taken date`);
-      console.log(`${searchDate.getDate()}--search date`);
       return (
         takenDate.getDate() === searchDate.getDate() &&
         takenDate.getMonth() === searchDate.getMonth() &&
         takenDate.getFullYear() === searchDate.getFullYear()
       );
     });
-    console.log(newData);
     setFilter(newData);
   }, [date]);
 
@@ -315,8 +305,7 @@ export const AllIssuedList = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/loan`);
-        console.log(response);
+        const response = await instance.get(`api/loan`);
         setBooks(response.data.loans);
         setFilter(response.data.loans);
         setPending(false);
@@ -327,15 +316,12 @@ export const AllIssuedList = ({
     fetchData();
   }, []);
 
-  //http://localhost:8080/api/loan/submit
 
   const submitLoan = async (id) => {
     try {
-      console.log(id);
-      const response = await axios.post(`${BASE_URL}/api/loan/submit`, {
+      await instance.post(`/api/loan/submit`, {
         loan_id: id,
       });
-      console.log(response);
       window.location.reload();
     } catch (error) {
       console.log(error);

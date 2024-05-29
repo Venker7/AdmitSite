@@ -6,7 +6,6 @@ import { Returned } from "./DashboardComponents/Returned";
 import { OverDue } from "./DashboardComponents/OverDue";
 import { RxCross1 } from "react-icons/rx";
 import { Attendance } from "./DashboardComponents/Attendance";
-import { Chart } from "./DashboardComponents/Chart";
 
 export const Dashboard = () => {
   const [modal, setModal] = useState(false);
@@ -24,7 +23,7 @@ export const Dashboard = () => {
         <Returned openmodal={openmodal} />
         <OverDue openmodal={openmodal} />
       </div>
-      <div className="attendance-div">
+      <div className="attendance-div w-full">
         <Attendance />
         {/* <Chart/> */}
       </div>

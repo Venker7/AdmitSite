@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./BookList.css";
 import Swal from "sweetalert2"
 
-// Custom hook to manage form state
 const useForm = (initialState) => {
   const [formData, setFormData] = useState(initialState);
  
@@ -33,12 +32,9 @@ export const EditForm = ({book,onUpdate}) => {
     CopiesAvailable:""
   });
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     
- 
     Swal.fire({
       title: "Do you want to save the changes?",
       showDenyButton: true,
@@ -55,7 +51,6 @@ export const EditForm = ({book,onUpdate}) => {
           timer: 3000,
           iconColor:'green'
         }) 
-        console.log("Form submitted:", formData);
         onUpdate()
       } else if (result.isDenied) {
         Swal.fire({icon:'info',title:'Changes are not saved',showConfirmButton:false,timer:3000});

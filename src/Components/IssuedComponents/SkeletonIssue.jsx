@@ -1,7 +1,7 @@
 import React from "react";
 import "./SkeletonIssue.css"
 export const SkeletonIssue = () => {
-  return <tr className="skeleton-row">
+return <tr className="skeleton-row">
             <td >
                 <div className="skeleton-name"><p></p></div>
             </td>

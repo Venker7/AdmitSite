@@ -5,10 +5,7 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import DataTable, { createTheme } from "react-data-table-component";
 import styled, { keyframes } from "styled-components";
-import Swal from "sweetalert2";
-import axios from "axios";
-
-import { BASE_URL } from "../constant";
+import { instance } from "../../../api";
 const rotate360 = keyframes`
   from {
     transform: rotate(0deg);
@@ -56,7 +53,6 @@ export const StudentRequestBooks = ({
   const [filter, setFilter] = useState([]);
 
   useEffect(() => {
-    console.log(searchitem);
     if (searchitem === 0) {
       setFilter(books);
     } else {
@@ -71,20 +67,15 @@ export const StudentRequestBooks = ({
   }, [searchitem]);
 
   useEffect(() => {
-    console.log(date);
     const searchDate = new Date(date);
-    // console.log(books);
     const newData = records.filter((row) => {
       const takenDate = new Date(row?.dateOfRequest);
-      console.log(`${takenDate.getDate()}--taken date`);
-      console.log(`${searchDate.getDate()}--search date`);
       return (
         takenDate.getDate() === searchDate.getDate() &&
         takenDate.getMonth() === searchDate.getMonth() &&
         takenDate.getFullYear() === searchDate.getFullYear()
       );
     });
-    console.log(newData);
     setFilter(newData);
   }, [date]);
   const columns = [
@@ -250,18 +241,15 @@ export const StudentRequestBooks = ({
     // }, 800);
     const fetchRequestBook = async () => {
       try {
-        const res = await fetch(`${BASE_URL}/api/request`);
-        const data = await res.json();
-        console.log(data);
-        setRecords(data.data);
-        setFilter(data.data);
+        const res = await instance.get("api/request");
+        setRecords(res.data.data);
+        setFilter(res.data.data);
         setPending(false);
       } catch (error) {
-        toast.error(error.message);
+        console.log(error);
       }
     };
     fetchRequestBook();
-    // return () => clearTimeout(timeout);
   }, []);
   return (
     <div className="content border border-black lg:flex lg:justify-start pl-8 transition-all md:flex md:justify-center">

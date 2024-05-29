@@ -1,88 +1,83 @@
-.table-header{
+.table-header {
     height: 35px;
     background-color: rgba(11, 95, 150, 0.769);
     color: white;
 }
 
-.student-name{
+.student-name {
     width: 350px;
     border-radius: 7px 0px 0px 0px;
 }
 
-.student-department{
+.student-department {
     width: 100px;
 }
-.student-reg.no{
+.student-reg.no {
     width: 130px;
 }
-.entry{
+.entry {
     width: 100px;
 }
-.date{
-width: 100px;
+.date {
+    width: 100px;
 }
-.exit{
+.exit {
     width: 100px;
     border-radius: 0px 7px 0px 0px;
     margin-right: 10px;
 }
 
-.table-body{
+.table-body {
     position: absolute;
-    width: 880px;
+    width: fit-content;
 
     height: 28rem;
     overflow: scroll;
 }
-.table-body tr{
+.table-body tr {
     font-size: 14px;
     background-color: rgba(110, 109, 109, 0.222);
 }
-.table-body tr:hover{
+.table-body tr:hover {
     background-color: rgba(165, 42, 42, 0.257);
     color: blue;
 }
-.table-body .name{
+.table-body .name {
     width: 349px;
 
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
-.table-body .branch{
+.table-body .branch {
     width: 99.5px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-.table-body .date{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.table-body .SID{
+.table-body .date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.table-body .SID {
     width: 107px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.table-body .entry-time{
+.table-body .entry-time {
     width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
-.table-body .exit-time{
-    width: 86px;
+.table-body .exit-time {
+    width: 110px;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }

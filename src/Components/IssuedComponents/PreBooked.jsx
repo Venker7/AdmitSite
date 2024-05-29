@@ -4,8 +4,7 @@ import "./PreBooked.css";
 import { format } from "date-fns";
 import DataTable, { createTheme } from "react-data-table-component";
 import styled, { keyframes } from "styled-components";
-import axios from "axios";
-import { BASE_URL } from "../constant";
+import { instance } from "../../../api";
 import Swal from "sweetalert2";
 
 const rotate360 = keyframes`
@@ -39,7 +38,7 @@ const CustomLoader = () => (
     </div>
   </div>
 );
-export const PreBooked = ({ isOpen, setIsOpen, searchitem, date, setDate }) => {
+export const PreBooked = ({ isOpen,  searchitem, date }) => {
   const [filter, setFilter] = useState([]);
 
   const confirmation = (id) => {
@@ -257,10 +256,10 @@ export const PreBooked = ({ isOpen, setIsOpen, searchitem, date, setDate }) => {
 
   const approveHandler = async (id) => {
     try {
-      const response = await axios.put(
-        `http://localhost:8080/api/renew/accept/${id}`
+      await instance.put(
+        `api/renew/accept/${id}`
       );
-      console.log(response);
+      window.location.reload();
     } catch (error) {
       console.log(error.message);
     }
@@ -268,10 +267,10 @@ export const PreBooked = ({ isOpen, setIsOpen, searchitem, date, setDate }) => {
 
   const rejectHandler = async (id) => {
     try {
-      const response = await axios.put(
-        `http://localhost:8080/api/renew/reject/${id}`
+      await instance.put(
+        `api/renew/reject/${id}`
       );
-      console.log(response);
+      window.location.reload();
     } catch (error) {
       console.log(error.message);
     }
@@ -279,8 +278,7 @@ export const PreBooked = ({ isOpen, setIsOpen, searchitem, date, setDate }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/renew/all`);
-      console.log(response);
+      const response = await instance.get("/api/renew/all");
       setBooks(response.data.data);
       setFilter(response.data.data);
       setPending(false);
@@ -295,7 +293,6 @@ export const PreBooked = ({ isOpen, setIsOpen, searchitem, date, setDate }) => {
   }, []);
 
   useEffect(() => {
-    console.log(searchitem);
     if (searchitem === 0) {
       setFilter(books);
     } else {
@@ -314,20 +311,15 @@ export const PreBooked = ({ isOpen, setIsOpen, searchitem, date, setDate }) => {
   }, [searchitem]);
 
   useEffect(() => {
-    console.log(date);
     const searchDate = new Date(date);
-    console.log(books);
     const newData = books.filter((row) => {
       const takenDate = new Date(row?.loan_id?.loanDate);
-      console.log(`${takenDate.getDate()}--taken date`);
-      console.log(`${searchDate.getDate()}--search date`);
       return (
         takenDate.getDate() === searchDate.getDate() &&
         takenDate.getMonth() === searchDate.getMonth() &&
         takenDate.getFullYear() === searchDate.getFullYear()
       );
     });
-    console.log(newData);
     setFilter(newData);
   }, [date]);
   return (
