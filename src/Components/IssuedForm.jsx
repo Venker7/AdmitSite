@@ -1,9 +1,10 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./IssuedForm.css";
 import { useDebouncedValue } from "@mantine/hooks";
 import { TiTick } from "react-icons/ti";
-import LoadingBar from 'react-top-loading-bar'
+import LoadingBar from "react-top-loading-bar";
 import { instance } from "../../api";
+import { Select } from "@mantine/core";
 
 import Swal from "sweetalert2";
 
@@ -26,43 +27,78 @@ export const IssuedForm = () => {
   const [branch, setBranch] = useState([]);
   const [branchId, setBranchId] = useState("");
   //   const [upload, setUpload] = useState({});
-
+  const [bookData1, setBookData1] = useState([]);
   const [verified, setVerified] = useState(false);
   const [debounced] = useDebouncedValue(registration1, 2000);
+  const [bookNameOneDebounced] = useDebouncedValue(bookName1, 500);
+  const [bookNametwoDebounced] = useDebouncedValue(bookName2, 500);
+  const [bookNamethreeDebounced] = useDebouncedValue(bookName3, 500);
   const [loading, setLoading] = useState(true);
   const [unsubmitted, setUnsubmitted] = useState();
   const [progress, setProgress] = useState(0);
 
-  const ref=useRef(null)
+  const ref = useRef(null);
 
   const handleAdding = () => {
     setAdding(true);
   };
 
   useEffect(() => {
-    const fetchBranch=async()=>{
-      const response = await instance.get('api/branch')
-      setBranch(response.data.data)
-
-    }
-    fetchBranch()
+    const fetchBranch = async () => {
+      const response = await instance.get("api/branch");
+      setBranch(response.data.data);
+    };
+    fetchBranch();
   }, []);
 
   useEffect(() => {
-    const fetchStudentId = async(id) => {
-      const response = await instance.get(`api/student/search?registrationNo=${id}`)
+    const fetchStudentId = async (id) => {
+      const response = await instance.get(
+        `api/student/search?registrationNo=${id}`
+      );
       if (response.data.success) {
-            setVerified(true);
-            setStudent(response.data.student);
-            setStudentId(response.data.student._id);
-            setLoading(false);
-            setUnsubmitted(response.data.unsubmitted.length);
-          }
-        }
+        setVerified(true);
+        setStudent(response.data.student);
+        setStudentId(response.data.student._id);
+        setLoading(false);
+        setUnsubmitted(response.data.unsubmitted.length);
+      }
+    };
     if (debounced) {
       fetchStudentId(debounced);
     }
   }, [debounced]);
+
+  useEffect(() => {
+    const fetchBook = async (name, setAuthor) => {
+      const { data } = await instance.get(`api/book/search?book_title=${name}`);
+      console.log(data);
+      if (data.success) {
+        for (const book of data?.books) {
+          if (bookData1.includes(book?.title)) {
+            setAuthor(book.author);
+          } else {
+            setBookData1((prev) => [...prev, book?.title]);
+            console.log(book.author);
+            setAuthor(book?.author);
+          }
+        }
+      }
+    };
+    const debouncedBooks = [
+      { name: bookNameOneDebounced, setter: setAuthor1 },
+      { name: bookNametwoDebounced, setter: setAuthor2 },
+      { name: bookNamethreeDebounced, setter: setAuthor3 }
+    ];
+  
+    debouncedBooks.forEach(({ name, setter }) => {
+      if (name) {
+        fetchBook(name, setter);
+      } else if (name === "") {
+        setter("");
+      }
+    });
+  }, [bookNameOneDebounced, bookNametwoDebounced, bookNamethreeDebounced]);
 
   const handleAdding2 = () => {
     setAdding(true);
@@ -149,13 +185,17 @@ export const IssuedForm = () => {
 
   const issuebookHandler = async (uploadData) => {
     console.log(uploadData);
-    ref.current.continuousStart()
+    ref.current.continuousStart();
     try {
-      const res= await instance.post('api/loan/add',{
-        loans:uploadData.loans,
-        student_id:uploadData.student_id,
-        branch_id:uploadData.branch_id
-      },{headers: {'Content-Type': 'application/json'}});
+      const res = await instance.post(
+        "api/loan/add",
+        {
+          loans: uploadData.loans,
+          student_id: uploadData.student_id,
+          branch_id: uploadData.branch_id,
+        },
+        { headers: { "Content-Type": "application/json" } }
+      );
       console.log(res);
       if (res.data.success) {
         Swal.fire({
@@ -165,7 +205,7 @@ export const IssuedForm = () => {
           iconColor: "green",
           timer: 3000,
         });
-        ref.current.complete()
+        ref.current.complete();
         setBookName1("");
         setAuthor1("");
         setBookId1("");
@@ -199,7 +239,7 @@ export const IssuedForm = () => {
 
   return (
     <div className="form-container">
-      <LoadingBar color='#f11946' ref={ref} />
+      <LoadingBar color="#f11946" ref={ref} />
       <form
         action=""
         className={`issuedForm ${
@@ -215,11 +255,19 @@ export const IssuedForm = () => {
         <h2>IssuedForm</h2>
         <div className="bookname">
           <label htmlFor="">Book-Name1: </label>
-          <input
-            value={bookName1}
-            onChange={(e) => setBookName1(e.target.value)}
-            type="text"
-            className="input"
+          <Select
+            style={{
+              width: "350px",
+              // border:'1px solid blue',
+              borderRadius: "5px",
+              outline: "none",
+            }}
+            clearable
+            searchable
+            searchValue={bookName1}
+            onSearchChange={setBookName1}
+            data={bookData1}
+            checkIconPosition="right"
           />
         </div>
         <div className="book-author">
@@ -245,12 +293,19 @@ export const IssuedForm = () => {
           <div>
             <div className="bookname" id="book2">
               <label htmlFor="">Book-Name2: </label>
-              <input
-                value={bookName2}
-                onChange={(e) => setBookName2(e.target.value)}
-                type="text"
-                className="input"
-              />
+              <Select
+            style={{
+              width: "350px",
+              borderRadius: "5px",
+              outline: "none",
+            }}
+            clearable
+            searchable
+            searchValue={bookName2}
+            onSearchChange={setBookName2}
+            data={bookData1}
+            checkIconPosition="right"
+          />
             </div>
             <div className="book-author">
               <label htmlFor="">Author: </label>
@@ -298,12 +353,20 @@ export const IssuedForm = () => {
           <div>
             <div className="bookname">
               <label htmlFor="">Book-Name3: </label>
-              <input
-                type="text"
-                value={bookName3}
-                onChange={(e) => setBookName3(e.target.value)}
-                className="input"
-              />
+              <Select
+            style={{
+              width: "350px",
+              // border:'1px solid blue',
+              borderRadius: "5px",
+              outline: "none",
+            }}
+            clearable
+            searchable
+            searchValue={bookName3}
+            onSearchChange={setBookName3}
+            data={bookData1}
+            checkIconPosition="right"
+          />
             </div>
             <div className="book-author">
               <label htmlFor="">Author: </label>
@@ -323,7 +386,7 @@ export const IssuedForm = () => {
                 className="input"
               />
             </div>
-            <button type="button" onKeyDown={handleCancel2} className="cancel">
+            <button type="button" onClick={handleCancel2} className="cancel">
               Cancel
             </button>
           </div>

@@ -40,7 +40,7 @@ export const Attendance = () => {
         </tr>
       </thead>
       <tbody className="bg-white">
-        {studentAttendances.map((attendance) => (
+        {studentAttendances ? studentAttendances.map((attendance) => (
           <tr className="border border-b-black" key={attendance._id}>
             <td>
               <div className="">{attendance.name}</div>
@@ -69,7 +69,7 @@ export const Attendance = () => {
               </div>
             </td>
           </tr>
-        ))}
+        )): "Loading..."}
       </tbody>
     </table>
   );
