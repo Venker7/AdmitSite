@@ -84,7 +84,7 @@ export const BookList = ({ searchItem, selectItem }) => {
             <div className="bookcard" key={book._id}>
               <div className="book-image">
                 <img
-                  src={`https://drive.google.com/thumbnail?id=${book.image_url}`}
+                  src={`https://drive.google.com/thumbnail?id=${book.image_url}&sz=w1000-h1000`}
                   alt="None"
                 />
               </div>
